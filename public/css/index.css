@@ -1,0 +1,723 @@
+#locator #search-btn, .red-btn {
+    color: #fff;
+    background-color: #f11230;
+    padding: 0;
+    font-weight: 700;
+    font-size: 18px;
+    -webkit-transition: background-color .1s;
+    transition: background-color .1s;
+    border-radius: 1px;
+    height: 40px;
+    line-height: 40px;
+    position: relative
+}
+
+#locator #search-btn:hover, .red-btn:hover {
+    background-color: #c41230
+}
+
+.red-outline-btn {
+    height: 40px;
+    line-height: 38px;
+    border: 1px solid #f11230;
+    background-color: transparent;
+    color: #f11230;
+    font-size: 18px;
+    font-weight: 700;
+    -webkit-transition: background-color .1s;
+    transition: background-color .1s
+}
+
+.red-outline-btn:hover {
+    background-color: #c41230;
+    color: #fff
+}
+
+.count-indicator {
+    display: block;
+    background-color: #fe8900;
+    color: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    top: 10px;
+    right: -15px;
+    font-size: 14px
+}
+
+#hero-banner {
+    position: relative;
+    width: 100%;
+    padding-bottom: 38.4375%
+}
+
+@media only screen and (max-width: 749px) {
+    #hero-banner {
+        padding-bottom: 62.5%
+    }
+}
+
+#hero-banner.transition .banners {
+    -webkit-transition: -webkit-transform .2s;
+    transition: -webkit-transform .2s;
+    transition: transform .2s;
+    transition: transform .2s, -webkit-transform .2s
+}
+
+#hero-banner .banners {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0)
+}
+
+#hero-banner .banner {
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+}
+
+#hero-banner .banner:nth-child(2) {
+    left: 100%
+}
+
+#hero-banner .banner:nth-child(3) {
+    left: 200%
+}
+
+#hero-banner .banner:nth-child(4) {
+    left: 300%
+}
+
+#hero-banner .banner:nth-child(5) {
+    left: 400%
+}
+
+#hero-banner .banner:nth-child(6) {
+    left: 500%
+}
+
+#hero-banner .banner:nth-child(7) {
+    left: 600%
+}
+
+#hero-banner img {
+    display: block;
+    margin: 0 auto;
+    width: 100%
+}
+
+#hero-banner .desktop {
+    display: block
+}
+
+@media only screen and (max-width: 749px) {
+    #hero-banner .desktop {
+        display: none
+    }
+}
+
+#hero-banner .mobile {
+    display: none
+}
+
+@media only screen and (max-width: 749px) {
+    #hero-banner .mobile {
+        display: block
+    }
+}
+
+#hero-banner .banner-dots {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%)
+}
+
+#hero-banner .banner-dots button {
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    float: left;
+    background-color: transparent
+}
+
+#hero-banner .banner-dots button::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    border: 1px solid #4d4d4d;
+    border-radius: 50%;
+    display: block
+}
+
+#hero-banner[data-index="0"] .banner-dots button:nth-child(1)::before {
+    background-color: #4d4d4d
+}
+
+#hero-banner[data-index="1"] .banner-dots button:nth-child(2)::before {
+    background-color: #4d4d4d
+}
+
+#hero-banner[data-index="2"] .banner-dots button:nth-child(3)::before {
+    background-color: #4d4d4d
+}
+
+#hero-banner[data-index="3"] .banner-dots button:nth-child(4)::before {
+    background-color: #4d4d4d
+}
+
+#hero-banner[data-index="4"] .banner-dots button:nth-child(5)::before {
+    background-color: #4d4d4d
+}
+
+#hero-banner[data-index="5"] .banner-dots button:nth-child(6)::before {
+    background-color: #4d4d4d
+}
+
+#hero-banner .slidernav {
+    width: 60px;
+    height: 60px
+}
+
+@media only screen and (max-width: 749px) {
+    #hero-banner .slidernav {
+        width: 45px;
+        height: 45px
+    }
+}
+
+#hero-banner .slidernav.next {
+    background-image: url(//static.kfc.com.my/images/general/icon-next-red.png?v=1.8.62)
+}
+
+#hero-banner .slidernav.next:hover {
+    background-image: url(//static.kfc.com.my/images/general/icon-next.png?v=1.8.62)
+}
+
+#hero-banner .slidernav.prev {
+    background-image: url(//static.kfc.com.my/images/general/icon-previous-red.png?v=1.8.62)
+}
+
+#hero-banner .slidernav.prev:hover {
+    background-image: url(//static.kfc.com.my/images/general/icon-previous.png?v=1.8.62)
+}
+
+#hero-banner #banner-delivery .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+}
+
+#hero-banner #banner-delivery .content img {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%)
+}
+
+#hero-banner #banner-delivery .content img.chicken {
+    -webkit-transform: translateY(-150%);
+    -ms-transform: translateY(-150%);
+    transform: translateY(-150%)
+}
+
+#hero-banner #banner-delivery.animate .content img {
+    -webkit-animation-duration: 4s;
+    animation-duration: 4s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite
+}
+
+#hero-banner #banner-delivery.animate .content img.chicken {
+    -webkit-animation-name: chickenMove;
+    animation-name: chickenMove
+}
+
+#hero-banner #banner-delivery.animate .content img.burger {
+    -webkit-animation-name: burgerMove;
+    animation-name: burgerMove
+}
+
+@-webkit-keyframes burgerMove {
+    0%, 45% {
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%)
+    }
+    50%, 94.9% {
+        -webkit-transform: translateY(50%);
+        transform: translateY(50%)
+    }
+    95% {
+        -webkit-transform: translateY(-150%);
+        transform: translateY(-150%)
+    }
+    100% {
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%)
+    }
+}
+
+@keyframes burgerMove {
+    0%, 45% {
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%)
+    }
+    50%, 94.9% {
+        -webkit-transform: translateY(50%);
+        transform: translateY(50%)
+    }
+    95% {
+        -webkit-transform: translateY(-150%);
+        transform: translateY(-150%)
+    }
+    100% {
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%)
+    }
+}
+
+@-webkit-keyframes chickenMove {
+    0%, 45% {
+        -webkit-transform: translateY(-150%);
+        transform: translateY(-150%)
+    }
+    50%, 95% {
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%)
+    }
+    100% {
+        -webkit-transform: translateY(50%);
+        transform: translateY(50%)
+    }
+}
+
+@keyframes chickenMove {
+    0%, 45% {
+        -webkit-transform: translateY(-150%);
+        transform: translateY(-150%)
+    }
+    50%, 95% {
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%)
+    }
+    100% {
+        -webkit-transform: translateY(50%);
+        transform: translateY(50%)
+    }
+}
+
+.section {
+    overflow: hidden;
+    text-align: center
+}
+
+#best-sellers {
+    background-color: #f4f2f1;
+    padding: 30px 0;
+    background-image: url(//static.kfc.com.my/images/landing/best-seller/best-seller-bg-ingredients-left.png?v=1.8.62), url(//static.kfc.com.my/images/landing/best-seller/best-seller-bg-ingredients-right.png?v=1.8.62), url(//static.kfc.com.my/images/landing/best-seller/background-texture.jpg?v=1.8.62);
+    background-size: auto 100%, auto 100%, 100%;
+    background-repeat: no-repeat, no-repeat, repeat-y;
+    background-position: left top, right top, center
+}
+
+@media only screen and (max-width: 749px) {
+    #best-sellers {
+        background-image: url(//static.kfc.com.my/images/landing/best-seller/background-texture.jpg?v=1.8.62);
+        background-size: 100%;
+        background-repeat: repeat-y;
+        padding: 0
+    }
+}
+
+#best-sellers .float-container {
+    position: relative
+}
+
+#best-sellers .float-container.transition .card-container {
+    -webkit-transition: -webkit-transform .2s;
+    transition: -webkit-transform .2s;
+    transition: transform .2s;
+    transition: transform .2s, -webkit-transform .2s
+}
+
+#best-sellers .card {
+    margin: 0 2% 2% 0;
+    -webkit-box-shadow: none;
+    box-shadow: none
+}
+
+#best-sellers .card .card-content {
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+    box-shadow: 0 0 5px rgba(0, 0, 0, .2)
+}
+
+#best-sellers .card:nth-child(3n) {
+    margin: 0 0 2% 0
+}
+
+#best-sellers .slidernav {
+    display: none
+}
+
+@media only screen and (max-width: 749px) {
+    #best-sellers .float-container .card-container {
+        width: 100%;
+        margin: 0 0 20px 0;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-wrap: 0;
+        -ms-flex-wrap: 0;
+        flex-wrap: 0;
+        overflow: visible
+    }
+
+    #best-sellers .float-container .card-container .card {
+        width: 45%;
+        -webkit-flex-shrink: 0;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+        height: initial;
+        margin: 0;
+        padding: 5px
+    }
+
+    #best-sellers .float-container .card-container .card[data-id="73"] .card-content, #best-sellers .float-container .card-container .card[data-id="74"] .card-content, #best-sellers .float-container .card-container .card[data-id="75"] .card-content {
+        background-image: url(//static.kfc.com.my/images/landing/best-seller/kaki2-bg-mobile.jpg?v=1.8.62);
+        background-size: 100% auto;
+        background-position: top
+    }
+
+    #best-sellers .float-container .card-container .card-content {
+        padding: 10px
+    }
+
+    #best-sellers .slidernav {
+        display: block
+    }
+
+    #best-sellers .slidernav.prev {
+        left: -10px
+    }
+
+    #best-sellers .slidernav.next {
+        right: -10px
+    }
+}
+
+#best-sellers .full-menu-card {
+    float: none;
+    display: block;
+    margin: 0 auto
+}
+
+@media only screen and (min-width: 750px) {
+    #best-sellers .full-menu-card {
+        clear: both;
+        width: initial
+    }
+}
+
+@media only screen and (max-width: 749px) {
+    #best-sellers .full-menu-card {
+        height: 100%
+    }
+}
+
+@media only screen and (min-width: 750px) {
+    #best-sellers .full-menu-card img {
+        display: none
+    }
+}
+
+@media only screen and (max-width: 749px) {
+    #best-sellers .full-menu-card span {
+        display: none
+    }
+}
+
+@media only screen and (min-width: 750px) {
+    #best-sellers .full-menu-card .card-content {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        background-color: transparent;
+        padding: 0
+    }
+
+    #best-sellers .full-menu-card .card-content a {
+        height: 40px;
+        line-height: 38px;
+        border: 1px solid #f11230;
+        position: relative;
+        color: #f11230;
+        padding: 0 40px 0 20px;
+        display: inline-block
+    }
+
+    #best-sellers .full-menu-card .card-content a::after {
+        content: '';
+        background-image: url(//static.kfc.com.my/images/general/icon-arrow-red.png?v=1.8.62);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
+        display: block;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        right: 5px;
+        top: 10px
+    }
+}
+
+@media only screen and (max-width: 749px) {
+    #best-sellers .full-menu-card .card-content {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        bottom: 5px;
+        right: 5px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        color: #f11230;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        padding: 0 !important;
+        overflow: hidden
+    }
+}
+
+#highlights {
+    background-color: #fff;
+    padding: 30px 0
+}
+
+@media only screen and (max-width: 749px) {
+    #highlights {
+        overflow: hidden;
+        padding: 0;
+        margin: 0 auto
+    }
+}
+
+.float-container {
+    margin: 0 auto;
+    width: 100%
+}
+
+.banner-container {
+    overflow: hidden;
+    margin: 0 auto 10px auto
+}
+
+.banner-container .banner {
+    float: left;
+    background-color: #fff;
+    margin: 1.5% 2% 0 0;
+    width: 32%
+}
+
+.banner-container .banner.large {
+    width: 100%
+}
+
+.banner-container .banner.middle {
+    width: 49%
+}
+
+.banner-container .banner.last {
+    margin-right: 0
+}
+
+.banner-container .banner img {
+    display: block;
+    margin: 0 auto
+}
+
+@media only screen and (max-width: 749px) {
+    .banner-container .banner img.hide-in-mobile {
+        display: none
+    }
+}
+
+@media only screen and (min-width: 750px) {
+    .banner-container .banner img.hide-in-desktop {
+        display: none
+    }
+}
+
+@media only screen and (max-width: 749px) {
+    .banner-container .banner {
+        width: 100%;
+        margin: 0 auto 20px;
+        float: none
+    }
+
+    .banner-container .banner.large, .banner-container .banner.last, .banner-container .banner.middle {
+        width: 100%
+    }
+}
+
+.banner-container .banner:last-child {
+    margin-right: 0
+}
+
+#best-sellers .container, #highlights .container {
+    position: relative
+}
+
+#best-sellers .floating-header, #highlights .floating-header {
+    position: relative
+}
+
+@media only screen and (max-width: 749px) {
+    #best-sellers .floating-header, #highlights .floating-header {
+        margin: 20px auto
+    }
+
+    #best-sellers .floating-header .heading, #highlights .floating-header .heading {
+        margin: 0 auto
+    }
+}
+
+@media only screen and (max-width: 749px) and (max-width: 749px) {
+    #best-sellers .floating-header h2, #highlights .floating-header h2 {
+        font-size: 22px
+    }
+}
+
+#best-sellers .actions, #highlights .actions {
+    text-align: center;
+    margin: 10px auto 20px
+}
+
+#best-sellers .actions.hide-in-desktop, #highlights .actions.hide-in-desktop {
+    position: absolute;
+    right: 0;
+    top: 0
+}
+
+#best-sellers .actions.hide-in-desktop a, #highlights .actions.hide-in-desktop a {
+    text-decoration: underline;
+    border: 0
+}
+
+#best-sellers .actions.hide-in-desktop a::after, #highlights .actions.hide-in-desktop a::after {
+    right: 15px
+}
+
+@media only screen and (min-width: 750px) {
+    #best-sellers .actions.hide-in-desktop, #highlights .actions.hide-in-desktop {
+        display: none
+    }
+}
+
+@media only screen and (max-width: 749px) {
+    #best-sellers .actions.hide-in-mobile, #highlights .actions.hide-in-mobile {
+        display: none
+    }
+}
+
+#best-sellers .actions a, #highlights .actions a {
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 40px 0 20px;
+    border: 1px solid #f11230;
+    color: #f11230;
+    position: relative
+}
+
+#best-sellers .actions a::after, #highlights .actions a::after {
+    content: '';
+    background-image: url(//static.kfc.com.my/images/general/icon-arrow-red.png?v=1.8.62);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 5px;
+    top: 10px
+}
+
+#locator {
+    background-image: url(//static.kfc.com.my/images/landing/find-a-kfc.png?v=1.8.62);
+    min-height: 240px
+}
+
+#locator .input-container {
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 400px;
+    padding: 0 10px;
+    position: relative
+}
+
+#locator #search-input {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 110px 0 10px;
+    outline: 0;
+    font-size: inherit
+}
+
+#locator #search-btn {
+    height: 40px;
+    font-weight: 700;
+    width: 100px;
+    position: absolute;
+    top: 0;
+    right: 10px
+}
+
+#locator a {
+    display: inline-block;
+    color: #fff;
+    text-decoration: underline;
+    margin: 10px 0 30px 0
+}
+
+.heading {
+    white-space: nowrap
+}
+
+@media only screen and (max-width: 749px) {
+    .heading .left-line, .heading .right-line {
+        display: table-cell
+    }
+}

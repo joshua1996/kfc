@@ -13,3 +13,4 @@
 
 
 Route::get('/', 'mainController@home');
+Route::get('/delivery/menu/favourites', 'mainController@menuFavourites');

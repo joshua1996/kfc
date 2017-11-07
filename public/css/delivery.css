@@ -1,0 +1,303 @@
+.red-btn {
+    color: #fff;
+    background-color: #f11230;
+    padding: 0;
+    font-weight: 700;
+    font-size: 18px;
+    -webkit-transition: background-color .1s;
+    transition: background-color .1s;
+    border-radius: 1px;
+    height: 40px;
+    line-height: 40px;
+    position: relative
+}
+
+.red-btn:hover {
+    background-color: #c41230
+}
+
+.red-outline-btn {
+    height: 40px;
+    line-height: 38px;
+    border: 1px solid #f11230;
+    background-color: transparent;
+    color: #f11230;
+    font-size: 18px;
+    font-weight: 700;
+    -webkit-transition: background-color .1s;
+    transition: background-color .1s
+}
+
+.red-outline-btn:hover {
+    background-color: #c41230;
+    color: #fff
+}
+
+.count-indicator {
+    display: block;
+    background-color: #fe8900;
+    color: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    top: 10px;
+    right: -15px;
+    font-size: 14px
+}
+
+body {
+    background-color: #f4f2f1
+}
+
+body #mobile-nav {
+    top: 50px
+}
+
+@media only screen and (max-width: 749px) {
+    #nav {
+        height: 50px
+    }
+}
+
+#kaki2-blurb, #kaki2-blurb-logo {
+    display: none !important
+}
+
+@media only screen and (max-width: 749px) {
+    #navigation-bar {
+        display: none
+    }
+
+    .has-location #content {
+        margin-top: 105px
+    }
+}
+
+.section {
+    overflow: hidden;
+    text-align: center
+}
+
+#delivery-tabnav-group {
+    position: relative
+}
+
+#delivery-subnav {
+    position: absolute;
+    right: 0;
+    margin: 3px 0;
+    top: 0;
+    position: relative;
+    max-width: 100%
+}
+
+@media only screen and (max-width: 749px) {
+    #delivery-subnav {
+        position: relative;
+        max-width: 100%
+    }
+}
+
+#delivery-subnav .category {
+    display: none;
+    margin: 20px auto
+}
+
+#delivery-tab[data-tab=alacarte] #delivery-subnav .category[data-tab=alacarte], #delivery-tab[data-tab=combo] #delivery-subnav .category[data-tab=combo], #delivery-tab[data-tab=favourites] #delivery-subnav .category[data-tab=favourites] {
+    display: block
+}
+
+#delivery-subnav .category button {
+    display: inline-block;
+    padding: 0 10px;
+    margin: 8px 3px;
+    color: #000;
+    background-color: transparent;
+    font-size: 14px;
+    font-weight: 700;
+    font-weight: 400;
+    color: #4d4d4d
+}
+
+#delivery-subnav .category button + button {
+    border-left: 1px solid #4d4d4d
+}
+
+#delivery-tab[data-tab=alacarte][data-subtab=addons] #delivery-subnav .category button[data-subtab=addons], #delivery-tab[data-tab=alacarte][data-subtab=all] #delivery-subnav .category button[data-subtab=all], #delivery-tab[data-tab=alacarte][data-subtab=chickenburgers] #delivery-subnav .category button[data-subtab=chickenburgers], #delivery-tab[data-tab=alacarte][data-subtab=sidesbeverages] #delivery-subnav .category button[data-subtab=sidesbeverages], #delivery-tab[data-tab=combo][data-subtab=all] #delivery-subnav .category button[data-subtab=all], #delivery-tab[data-tab=combo][data-subtab=family] #delivery-subnav .category button[data-subtab=family], #delivery-tab[data-tab=combo][data-subtab=individual] #delivery-subnav .category button[data-subtab=individual], #delivery-tab[data-tab=favourites][data-subtab=all] #delivery-subnav .category button[data-subtab=all] {
+    text-decoration: underline;
+    font-weight: 700
+}
+
+#delivery-tabnav {
+    overflow: hidden;
+    margin: 20px 0;
+    list-style-type: none;
+    padding: 0;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    min-width: 300px;
+    width: 100%;
+    max-width: 750px;
+    margin: 20px auto;
+    z-index: 1
+}
+
+@media only screen and (max-width: 749px) {
+    #delivery-tabnav {
+        width: 100%;
+        max-width: 100%;
+        position: fixed;
+        top: 50px;
+        left: 0;
+        margin: 0;
+        z-index: 1;
+        border-top: 0
+    }
+}
+
+#delivery-tabnav a {
+    float: left;
+    color: #000;
+    background-color: #fff;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    min-width: 100px;
+    font-weight: 700;
+    border-left: 1px solid #000;
+    width: 33.3333%;
+    cursor: pointer
+}
+
+#delivery-tab[data-tab=alacarte] #delivery-tabnav a[data-tab=alacarte], #delivery-tab[data-tab=combo] #delivery-tabnav a[data-tab=combo], #delivery-tab[data-tab=favourites] #delivery-tabnav a[data-tab=favourites] {
+    color: #fff;
+    background-color: #000
+}
+
+#delivery-tabnav a:last-child {
+    border-right: 1px solid #000
+}
+
+@media only screen and (max-width: 749px) {
+    #delivery-tabnav a:first-child {
+        border-left: 0
+    }
+
+    #delivery-tabnav a:last-child {
+        border-right: 0
+    }
+}
+
+#delivery-tabcontent .float-container {
+    display: none
+}
+
+#delivery-tabcontent .card-container {
+    overflow: initial
+}
+
+#delivery-tabcontent .card {
+    padding: 0;
+    width: 30%;
+    margin: 0 5% 0 0
+}
+
+#delivery-tabcontent .card:nth-child(3n) {
+    margin: 0 0 5% 0
+}
+
+@media only screen and (max-width: 749px) {
+    #delivery-tabcontent .card:nth-child(3n) {
+        margin: 20px auto
+    }
+}
+
+@media only screen and (max-width: 749px) {
+    #delivery-tabcontent .card {
+        width: 100%;
+        margin: 20px auto
+    }
+
+    #delivery-tabcontent .card .card-content {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+        padding: 10px 20px
+    }
+
+    #delivery-tabcontent .card .details, #delivery-tabcontent .card .toggle-info {
+        display: none
+    }
+
+    #delivery-tabcontent .card .info, #delivery-tabcontent .card .meta {
+        display: table-cell;
+        vertical-align: middle
+    }
+
+    #delivery-tabcontent .card .info {
+        width: 50%;
+        -webkit-transform-style: initial;
+        transform-style: initial;
+        will-change: initial;
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none
+    }
+
+    #delivery-tabcontent .card .meta {
+        width: 50%
+    }
+
+    #delivery-tabcontent .card .meta h3 {
+        white-space: initial;
+        overflow: initial;
+        text-overflow: initial;
+        height: auto;
+        line-height: 18px;
+        padding: 5px 0
+    }
+
+    #delivery-tabcontent .card .image {
+        -webkit-backface-visibility: initial;
+        backface-visibility: initial;
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none
+    }
+
+    #delivery-tabcontent .card .image img {
+        display: block
+    }
+}
+
+@media only screen and (max-width: 749px) and (max-width: 749px) {
+    #delivery-tabcontent .card .image img {
+        max-height: 160px;
+        margin: 0 auto
+    }
+}
+
+.float-container {
+    margin: 0 auto;
+    width: 100%
+}
+
+#delivery-tab[data-tab=alacarte] #delivery-tabcontent [data-tab=alacarte], #delivery-tab[data-tab=combo] #delivery-tabcontent [data-tab=combo], #delivery-tab[data-tab=favourites] #delivery-tabcontent [data-tab=favourites] {
+    display: block
+}
+
+#delivery-menu-loading {
+    padding: 20px 0
+}
+
+@media only screen and (min-width: 750px) {
+    .hide-in-desktop {
+        display: none
+    }
+
+    .hide-in-desktop ~ button {
+        border-left: 1px solid #000
+    }
+}

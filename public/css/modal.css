@@ -1,0 +1,2614 @@
+.modal .modal-content-box button, .red-btn {
+    color: #fff;
+    background-color: #f11230;
+    padding: 0;
+    font-weight: 700;
+    font-size: 18px;
+    -webkit-transition: background-color .1s;
+    transition: background-color .1s;
+    border-radius: 1px;
+    height: 40px;
+    line-height: 40px;
+    position: relative
+}
+
+.modal .modal-content-box button:hover, .red-btn:hover {
+    background-color: #c41230
+}
+
+#modal-address .modal-content-box .actions button:first-child, #modal-confirm-add-cart .buttons .cancel, #modal-message .buttons .cancel, .red-outline-btn {
+    height: 40px;
+    line-height: 38px;
+    border: 1px solid #f11230;
+    background-color: transparent;
+    color: #f11230;
+    font-size: 18px;
+    font-weight: 700;
+    -webkit-transition: background-color .1s;
+    transition: background-color .1s
+}
+
+#modal-address .modal-content-box .actions button:hover:first-child, #modal-confirm-add-cart .buttons .cancel:hover, #modal-message .buttons .cancel:hover, .red-outline-btn:hover {
+    background-color: #c41230;
+    color: #fff
+}
+
+.count-indicator {
+    display: block;
+    background-color: #fe8900;
+    color: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    top: 10px;
+    right: -15px;
+    font-size: 14px
+}
+
+.modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 11;
+    color: #4d4d4d;
+    text-align: center
+}
+
+@media only screen and (max-width: 749px) {
+    .modal {
+        position: static;
+        height: initial
+    }
+}
+
+.modal.visible {
+    display: block
+}
+
+.modal .overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    opacity: .5
+}
+
+@media only screen and (max-width: 749px) {
+    .modal .overlay {
+        display: none
+    }
+}
+
+.modal .modal-content-box {
+    position: fixed;
+    background-color: #fff;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 0;
+    max-width: 500px;
+    width: 100%;
+    max-height: 100%;
+    overflow: auto
+}
+
+@media only screen and (max-width: 749px) {
+    .modal .modal-content-box {
+        position: relative;
+        margin: 0;
+        max-width: 900px;
+        top: 0;
+        left: 0;
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none
+    }
+}
+
+.modal .modal-content-box button {
+    font-size: 18px;
+    padding: 0 30px
+}
+
+.modal .modal-content-box button.anchor-button {
+    color: #4d4d4d;
+    background-color: transparent;
+    height: initial;
+    line-height: initial;
+    text-decoration: underline;
+    font-size: 16px
+}
+
+.modal .modal-content-box p {
+    margin: 5px 0
+}
+
+.modal .modal-content-box .close-nav {
+    padding: 0;
+    margin: 0;
+    height: 50px
+}
+
+@media only screen and (max-width: 749px) {
+    .modal .modal-content-box .close-nav {
+        background-color: #c41230;
+        border-bottom: 3px solid #f11230;
+        position: fixed;
+        width: 100%;
+        z-index: 2
+    }
+
+    .modal .modal-content-box .close-nav::after {
+        background-image: url(//static.kfc.com.my/images/general/kfc-logo-text-white.png?v=1.8.62);
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        background-position: center;
+        content: '';
+        display: block;
+        position: relative;
+        width: 100px;
+        height: 50px;
+        margin: 0 auto
+    }
+}
+
+.modal .modal-content-box .button-close {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    cursor: pointer;
+    padding: 0;
+    float: right;
+    background-color: transparent;
+    color: #4d4d4d;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    margin: 0 auto
+}
+
+.modal .modal-content-box .button-close::before {
+    content: '';
+    display: block;
+    background-image: url(//static.kfc.com.my/images/general/btn-close-grey.png?v=1.8.62);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    width: 20px;
+    height: 20px;
+    margin: 0 auto
+}
+
+@media only screen and (max-width: 749px) {
+    .modal .modal-content-box .button-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50px;
+        height: 50px;
+        margin: 0
+    }
+
+    .modal .modal-content-box .button-close::before {
+        background-image: url(//static.kfc.com.my/images/general/btn-close-white.png?v=1.8.62);
+        margin: 0 auto
+    }
+}
+
+.modal .modal-content-box .button-close:hover {
+    background-color: transparent
+}
+
+.modal .line {
+    width: 100%;
+    display: inline-block;
+    height: 1px;
+    background-color: rgba(178, 178, 178, .5);
+    vertical-align: middle
+}
+
+.modal .seperator .line {
+    width: 45%
+}
+
+.modal .seperator p {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 20px;
+    width: 10%;
+    font-weight: 700
+}
+
+.modal .modal-content {
+    position: relative;
+    margin: 10px 20px 30px
+}
+
+@media only screen and (max-width: 749px) {
+    .modal .modal-content {
+        margin: 60px 10px 30px 10px
+    }
+}
+
+.modal .modal-content button {
+    margin: 10px auto 20px
+}
+
+.modal .modal-content button.button-advance-order {
+    background-color: transparent;
+    border: 1px solid #f11230;
+    color: #f11230;
+    line-height: 38px
+}
+
+.modal .modal-content button.button-advance-order:hover {
+    background-color: #c41230;
+    color: #fff
+}
+
+.modal .modal-content .header {
+    text-align: center;
+    margin: 20px 0 0
+}
+
+.modal .modal-content .header h3 {
+    margin: 5px auto 10px;
+    font-size: 20px
+}
+
+.modal .modal-content .header img {
+    display: block;
+    margin: 0 auto
+}
+
+.modal .loading-screen {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    text-align: center
+}
+
+.is-loading.modal .loading-screen {
+    display: block
+}
+
+.modal .loading-screen::before {
+    content: '';
+    background-color: rgba(255, 255, 255, .9);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0
+}
+
+.modal .loading-screen .modal-content {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: #f11230;
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+    margin: 0 30px
+}
+
+.modal .loading-screen .modal-content p {
+    margin: 20px 0 0
+}
+
+.modal h3 {
+    font-size: 19px;
+    margin: 10px 0
+}
+
+.modal a {
+    text-decoration: underline;
+    color: #4d4d4d;
+    margin: 20px 0;
+    font-weight: 700
+}
+
+.modal .header img {
+    width: 90px
+}
+
+#modal-address .modal-content-box {
+    width: 100%;
+    max-width: 800px;
+    text-align: left
+}
+
+#modal-address .modal-content-box .header {
+    text-align: center;
+    font-weight: 700;
+    margin: 20px 0
+}
+
+#modal-address .modal-content-box .header p {
+    margin: 0
+}
+
+#modal-address .modal-content-box .field {
+    width: 49%;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 2% 0 0
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-address .modal-content-box .field {
+        width: 100%;
+        margin: 0 0 15px
+    }
+}
+
+#modal-address .modal-content-box .field .input {
+    height: initial;
+    width: 100%
+}
+
+#modal-address .modal-content-box .field textarea {
+    height: 80px;
+    resize: none
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-address .modal-content-box .field textarea {
+        padding: 20px 10px 10px 10px
+    }
+}
+
+#modal-address .modal-content-box .filled-field {
+    display: inline-block;
+    width: 49%;
+    vertical-align: middle
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-address .modal-content-box .filled-field {
+        width: 100%
+    }
+}
+
+#modal-address .modal-content-box .filled-field p {
+    margin: 5px 0
+}
+
+#modal-address .modal-content-box .actions {
+    text-align: center;
+    margin: 25px 0 0
+}
+
+#modal-address .modal-content-box .actions button {
+    display: inline-block;
+    width: 150px;
+    margin: 0
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-address .modal-content-box .actions button {
+        float: left;
+        width: 49%
+    }
+}
+
+#modal-address .modal-content-box .actions button:first-child {
+    margin: 0 10px 0 0
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-address .modal-content-box .actions button:first-child {
+        margin: 0 2% 0 0
+    }
+}
+
+.modal.login-modal {
+    text-align: center
+}
+
+.modal.login-modal .modal-content-box {
+    margin: 0 0 20px;
+    max-width: 500px;
+    width: 100%
+}
+
+@media only screen and (max-width: 749px) {
+    .modal.login-modal .modal-content-box {
+        max-width: 900px;
+        margin: 0
+    }
+}
+
+.modal.login-modal .modal-content .content-wrapper {
+    margin: 20px auto 0;
+    max-width: 500px
+}
+
+.modal.login-modal .input {
+    width: 100%;
+    margin: 10px 0
+}
+
+.modal.login-modal .input input {
+    width: 100%;
+    padding: 0 10px
+}
+
+.modal.login-modal button {
+    margin: 10px auto;
+    width: 100%;
+    max-width: 500px
+}
+
+.modal.login-modal button#fblogin, .modal.login-modal button#fbsignup {
+    background-color: #3d6db9;
+    padding: 0 20px
+}
+
+.modal.login-modal .signuphere {
+    padding: 15px 0 0;
+    font-weight: 400;
+    border-top: 1px solid #b2b2b2;
+    margin: 20px 0 0
+}
+
+.modal.login-modal .signuphere button {
+    background-color: transparent;
+    border: 1px solid #f11230;
+    color: #f11230
+}
+
+.modal.login-modal .signuphere p {
+    margin: 0
+}
+
+#modal-login button.forgot, #modal-member-checkout button.forgot {
+    color: grey;
+    position: absolute;
+    width: auto;
+    padding: 0 10px;
+    margin: 0;
+    font-weight: 400;
+    background-color: transparent;
+    top: 0;
+    right: 0;
+    font-size: inherit;
+    text-decoration: underline;
+    height: 100%;
+    font-size: 12px
+}
+
+#modal-login .input input[type=password], #modal-member-checkout .input input[type=password] {
+    padding: 0 80px 0 10px
+}
+
+#modal-login .input.error input[type=password], #modal-member-checkout .input.error input[type=password] {
+    padding: 0 120px 0 10px
+}
+
+#modal-login .input.error button.forgot, #modal-member-checkout .input.error button.forgot {
+    right: 35px
+}
+
+#modal-login button.link, #modal-member-checkout button.link {
+    background-color: transparent;
+    border: 0;
+    font-size: 16px;
+    text-decoration: underline;
+    margin: 0 auto;
+    padding: 0;
+    font-weight: 400;
+    width: auto;
+    color: grey
+}
+
+#modal-forgot-password .button-back {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: none;
+    background-image: url(//static.kfc.com.my/images/general/icon-arrow.png?v=1.8.62);
+    background-size: 100% auto;
+    background-color: transparent;
+    position: absolute;
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+    margin: 5px 0
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-forgot-password .button-back {
+        display: block
+    }
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-forgot-password .button-close {
+        display: none
+    }
+}
+
+#modal-forgot-password .content-wrapper {
+    display: none
+}
+
+[data-content=forgot-password]#modal-forgot-password .content-wrapper.forgot-password {
+    display: block
+}
+
+[data-content=email-sent]#modal-forgot-password .content-wrapper.email-sent {
+    display: block
+}
+
+#modal-forgot-password .content-wrapper p:nth-child(3) {
+    font-weight: 400
+}
+
+#modal-forgot-password .content-wrapper button {
+    margin: 20px 0 30px
+}
+
+#modal-reset-password .content-wrapper {
+    display: none
+}
+
+[data-content=reset]#modal-reset-password .content-wrapper.reset {
+    display: block
+}
+
+[data-content=changed]#modal-reset-password .content-wrapper.changed {
+    display: block
+}
+
+#modal-reset-password .modal-content button {
+    margin: 10px 0 30px
+}
+
+#modal-register .modal-content-box {
+    max-width: 800px
+}
+
+#modal-register .modal-content .content-wrapper {
+    max-width: 800px;
+    width: 100%
+}
+
+#modal-register .modal-content .content-wrapper p {
+    font-weight: 400;
+    margin: 0 auto
+}
+
+#modal-register .facebook-section {
+    background-color: #f4f2f1;
+    padding: 20px 0
+}
+
+#modal-register .facebook-section button {
+    width: 90%;
+    max-width: 350px
+}
+
+#modal-register .facebook-section p {
+    margin: 10px auto 0;
+    font-size: 14px;
+    width: 90%;
+    max-width: 300px
+}
+
+#modal-register .seperator {
+    margin: 20px 0 0
+}
+
+#modal-register .form-section {
+    padding: 20px
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-register .form-section {
+        padding: 0
+    }
+}
+
+#modal-register .table {
+    display: inline-table;
+    vertical-align: top;
+    width: 50%
+}
+
+#modal-register .table.left {
+    padding-right: 1.5%
+}
+
+#modal-register .table.right {
+    padding-left: 1.5%
+}
+
+#modal-register .table:nth-child(1) {
+    border-right: 1px solid rgba(178, 178, 178, .5)
+}
+
+#modal-register .table:nth-child(3), #modal-register .table:nth-child(4) {
+    margin-top: 20px
+}
+
+#modal-register .table .input {
+    margin: 0
+}
+
+#modal-register .table .input:nth-child(2) {
+    margin: 10px 0
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-register .table {
+        display: block;
+        width: 100%;
+        padding: 0 !important;
+        border: 0 !important;
+        margin: 10px 0
+    }
+}
+
+#modal-register .checkbox-group {
+    position: repeat-x;
+    text-align: left;
+    margin: 5px 0
+}
+
+#modal-register .checkbox-group .checkbox {
+    padding: 0;
+    display: inline-table
+}
+
+#modal-register .checkbox-group p {
+    display: inline-table;
+    width: 80%
+}
+
+#modal-register a {
+    display: inline;
+    margin: 0
+}
+
+#modal-register .g-recaptcha.error iframe {
+    border: 1px solid #f11230
+}
+
+#modal-delivery-eta .seperator {
+    margin: 0 20px
+}
+
+#modal-delivery-eta .modal-content button {
+    max-width: 300px;
+    width: 100%;
+    margin: 20px auto
+}
+
+#modal-delivery-eta .modal-content .header p {
+    margin: 5px auto 10px
+}
+
+#modal-delivery-eta .warning {
+    color: #f11230;
+    font-size: 14px;
+    margin: 10px 0
+}
+
+#modal-warning .button-close {
+    display: none
+}
+
+#modal-delivery-unavailable a {
+    margin: 20px auto 10px
+}
+
+#modal-delivery-unavailable .phone {
+    font-size: 33px;
+    font-weight: 700;
+    color: #c41230;
+    margin: 5px 0
+}
+
+#modal-payment-unsuccessful .modal-content p {
+    margin: 10px auto 20px;
+    width: 90%;
+    max-width: 350px
+}
+
+#modal-payment-unsuccessful .error {
+    color: #f11230;
+    font-weight: 700
+}
+
+#modal-payment-unsuccessful .phone {
+    color: #c41230;
+    font-size: 30px;
+    margin: 0 auto;
+    font-weight: 700
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-payment-unsuccessful .phone {
+        font-size: 32px;
+        text-align: center
+    }
+}
+
+#modal-payment-unsuccessful a[href^=tel] {
+    display: inline-block;
+    color: inherit;
+    text-decoration: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0
+}
+
+#modal-payment-error a {
+    font-size: 25px;
+    color: #f11230;
+    margin: 5px 0 10px
+}
+
+#modal-payment-error h3 img {
+    display: inline-block;
+    vertical-align: top;
+    width: 22px;
+    margin-left: 5px
+}
+
+#modal-advance-order .modal-content .header p {
+    margin: 5px auto 10px
+}
+
+#modal-advance-order .error-message {
+    color: #c41230
+}
+
+#modal-advance-order .form {
+    text-align: left;
+    padding: 10px 20px
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-advance-order .form {
+        padding: 10px 0 20px
+    }
+}
+
+#modal-advance-order .form p {
+    margin: 0
+}
+
+#modal-advance-order .field {
+    width: 49%;
+    float: left;
+    margin: 0
+}
+
+#modal-advance-order .field label {
+    display: block;
+    height: 24px;
+    line-height: 24px;
+    font-weight: 600
+}
+
+#modal-advance-order .field:first-child {
+    margin: 0 2% 0 0
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-advance-order .field {
+        width: 100%;
+        margin: 10px 0;
+        float: none
+    }
+}
+
+#modal-advance-order .field .select {
+    width: 100%
+}
+
+#modal-advance-order .field .select select {
+    width: 100%
+}
+
+#modal-advance-order .field .advance-hour, #modal-advance-order .field .advance-minute {
+    width: 40%;
+    float: left
+}
+
+#modal-advance-order .field .advance-hour {
+    margin: 0 2% 0 0
+}
+
+#modal-advance-order .field .meridiem {
+    padding: 5px;
+    float: left
+}
+
+#modal-check-location .modal-content {
+    margin: 0
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-check-location .modal-content button {
+        width: 100%
+    }
+}
+
+#modal-check-location .header {
+    position: relative
+}
+
+#modal-check-location .header img + img:last-of-type {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0
+}
+
+#modal-check-location .content-wrapper {
+    padding: 20px
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-check-location .content-wrapper {
+        padding: 60px 20px 20px 20px
+    }
+}
+
+#modal-check-location .content-wrapper input {
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+    color: #c41230;
+    font-weight: 700;
+    padding: 0
+}
+
+#modal-check-location .content-wrapper a {
+    margin: 20px 0 10px
+}
+
+#modal-check-location[data-content=check-location] .content-wrapper.check-location, #modal-check-location[data-content=delivery-location] .content-wrapper.delivery-location {
+    display: block
+}
+
+#modal-check-location .alert {
+    background-color: #000;
+    color: #fff;
+    font-size: 14px;
+    padding: 7px 20px
+}
+
+#modal-check-location .search-bar {
+    margin: 20px 0;
+    position: relative;
+    width: 100%
+}
+
+#modal-check-location .search-bar .input {
+    padding: 0
+}
+
+#modal-check-location .search-bar button {
+    display: none;
+    height: 40px;
+    padding: 0;
+    margin: 0;
+    width: 100px;
+    position: absolute;
+    top: 0;
+    right: 0
+}
+
+#modal-check-location .error {
+    margin: 20px auto;
+    color: #c41230
+}
+
+#modal-check-location .lists {
+    position: absolute;
+    top: 100%;
+    width: 90%;
+    text-align: left;
+    left: 5%;
+    background-color: #fff
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-check-location .lists {
+        width: 100%;
+        left: 0
+    }
+}
+
+#modal-check-location .lists .list {
+    border: 1px solid #b2b2b2;
+    border-top: 0;
+    padding: 0 10px 0 50px;
+    height: 40px;
+    line-height: 38px;
+    cursor: pointer;
+    position: relative
+}
+
+#modal-check-location .lists .list::before {
+    content: '';
+    background-image: url(http://placehold.it/30?v=1.8.62);
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    display: inline-block;
+    vertical-align: center;
+    left: 10px;
+    top: 4px
+}
+
+#modal-check-location .delivery-location {
+    padding: 0 20px 20px 20px
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-check-location .delivery-location {
+        padding: 40px 20px 20px 20px
+    }
+}
+
+#modal-check-location .delivery-location input {
+    height: 100%;
+    margin: 0
+}
+
+#modal-check-location .delivery-location p {
+    border: 1px solid #f4f2f1;
+    color: #f11230;
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+    overflow: hidden;
+    padding: 10px 40px
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-check-location .delivery-location p {
+        font-size: 14px
+    }
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-check-location .delivery-location h3 {
+        font-size: 16px
+    }
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-check-location .delivery-location img {
+        width: 40px;
+        height: 40px
+    }
+}
+
+#modal-check-location #searchlist-loading {
+    margin: 20px auto;
+    color: #b2b2b2
+}
+
+#modal-check-location #searchlist-result {
+    max-height: 300px;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+    text-align: left
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-check-location #searchlist-result {
+        max-height: initial
+    }
+}
+
+#modal-check-location #searchlist-result li {
+    padding: 10px;
+    cursor: pointer
+}
+
+#modal-check-location #searchlist-result li:hover {
+    background-color: #f11230;
+    color: #fff
+}
+
+#modal-check-location #searchlist-result li + li {
+    border-top: 1px solid #f4f2f1
+}
+
+#modal-check-location #searchlist-result li strong {
+    color: #750b1d
+}
+
+#modal-check-location #searchlist-result .google-image {
+    float: right
+}
+
+#modal-check-location .static-map {
+    margin: 10px 0
+}
+
+#modal-check-location .static-map img {
+    display: block;
+    margin: 0 auto
+}
+
+#modal-check-location #user-location-map {
+    width: 100%;
+    height: 250px;
+    min-width: 100%;
+    min-height: 250px;
+    position: relative
+}
+
+#modal-check-location #user-location-map::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -100%);
+    -ms-transform: translate(-50%, -100%);
+    transform: translate(-50%, -100%);
+    background-image: url(/images/store/icon-pin-small.png?v=1.8.62);
+    width: 42px;
+    height: 45px;
+    background-size: 85% auto;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    opacity: .8
+}
+
+#modal-check-location #user-location-map.is-loading {
+    border: 1px solid #f4f2f1;
+    background-color: rgba(0, 0, 0, .2)
+}
+
+#modal-check-location #user-location-map.is-loading::after {
+    background-image: none;
+    width: initial;
+    height: initial;
+    opacity: 1;
+    content: attr(data-text);
+    font-weight: 700
+}
+
+#modal-check-location #user-location-map.is-loading > div {
+    opacity: 0
+}
+
+#modal-delivery-address .modal-content .header p {
+    margin: 5px auto 10px
+}
+
+#modal-delivery-address .modal-content .header h3 {
+    margin: 5px
+}
+
+#modal-delivery-address button {
+    margin: -1px auto 0
+}
+
+#modal-delivery-address .address-list {
+    background-color: #f4f2f1;
+    padding: 0 20px;
+    margin: 10px 0 20px;
+    max-height: 180px;
+    overflow-y: auto
+}
+
+#modal-delivery-address table {
+    border-spacing: 0 15px;
+    border-collapse: separate
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-delivery-address table {
+        max-height: 45%;
+        width: 100%
+    }
+}
+
+#modal-delivery-address table tr {
+    background-color: #fff;
+    margin: 0 0 10px;
+    text-align: left;
+    padding: 10px 15px;
+    cursor: pointer
+}
+
+#modal-delivery-address table tr:last-child {
+    margin: 0
+}
+
+#modal-delivery-address table tr td {
+    padding: 10px 5px
+}
+
+#modal-delivery-address table tr td:nth-child(1) {
+    vertical-align: top
+}
+
+#modal-delivery-address .error {
+    color: #f11230;
+    font-weight: 700
+}
+
+#modal-delivery-address .checkbox {
+    padding: 0
+}
+
+#modal-customize-item .modal-content-box {
+    background-color: #f4f2f1;
+    overflow: hidden;
+    max-width: 540px
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-customize-item .modal-content-box {
+        max-width: 800px
+    }
+}
+
+[data-customize]#modal-customize-item .modal-content-box {
+    max-width: 800px
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-customize-item .modal-content-box .modal-content {
+        position: relative;
+        margin: 0;
+        padding: 68px 5px 0;
+        width: 100%
+    }
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-customize-item .overflow-container {
+        height: 100%;
+        padding: 0 0 120px 0
+    }
+}
+
+#modal-customize-item .close-nav {
+    text-align: left;
+    border-bottom: 2px solid #b2b2b2;
+    height: 50px;
+    line-height: 49px;
+    color: #4d4d4d;
+    background-color: #f4f2f1
+}
+
+#modal-customize-item .close-nav::after {
+    display: none
+}
+
+#modal-customize-item .close-nav h3 {
+    display: inline-block;
+    margin: 0 20px
+}
+
+#modal-customize-item .close-nav .button-close {
+    width: 55px;
+    height: 50px
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-customize-item .close-nav .button-close::before {
+        background-image: url(//static.kfc.com.my/images/general/btn-close-grey.png);
+        margin: 0 auto
+    }
+}
+
+#modal-customize-item .content-wrapper {
+    margin: 20px 0;
+    position: relative
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-customize-item .content-wrapper {
+        margin: 0
+    }
+}
+
+#modal-customize-item .meal {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #b2b2b2;
+    padding: 20px;
+    position: relative
+}
+
+[data-customize]#modal-customize-item .meal {
+    width: 30%;
+    margin: 0
+}
+
+@media only screen and (max-width: 749px) {
+    [data-customize]#modal-customize-item .meal {
+        display: table;
+        padding: 10px
+    }
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-customize-item .meal {
+        display: block;
+        width: 100% !important;
+        max-width: 500px;
+        margin: 0 auto !important
+    }
+}
+
+#modal-customize-item .meal .image {
+    width: 49%;
+    display: inline-block;
+    vertical-align: middle
+}
+
+#modal-customize-item .meal .image img {
+    display: block
+}
+
+[data-customize]#modal-customize-item .meal .image {
+    width: 100%
+}
+
+@media only screen and (max-width: 749px) {
+    [data-customize]#modal-customize-item .meal .image {
+        display: table-cell;
+        width: 50%
+    }
+}
+
+#modal-customize-item .details {
+    width: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left
+}
+
+[data-customize]#modal-customize-item .details {
+    width: 100%
+}
+
+@media only screen and (max-width: 749px) {
+    [data-customize]#modal-customize-item .details {
+        display: table-cell;
+        width: 50%
+    }
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-customize-item .details {
+        width: 50%;
+        display: inline-block;
+        vertical-align: middle
+    }
+
+    #modal-customize-item .details h6:nth-child(3) {
+        font-weight: 600
+    }
+}
+
+#modal-customize-item .details ul {
+    font-size: 14px
+}
+
+#modal-customize-item .buttons {
+    position: relative;
+    bottom: 0;
+    margin: 0 auto;
+    width: 100%;
+    right: 0
+}
+
+[data-customize]#modal-customize-item .buttons {
+    position: absolute;
+    width: 63%;
+    right: 30px
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-customize-item .buttons {
+        width: 100% !important;
+        position: relative
+    }
+
+    [data-customize]#modal-customize-item .buttons {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding: 20px 0;
+        background-color: #f4f2f1
+    }
+}
+
+@media only screen and (max-width: 749px) and (max-width: 749px) {
+    [data-customize]#modal-customize-item .buttons {
+        padding: 20px 5px
+    }
+}
+
+#modal-customize-item .quantity {
+    float: none;
+    width: 100%;
+    position: relative
+}
+
+[data-customize]#modal-customize-item .quantity {
+    width: 130px
+}
+
+#modal-customize-item .quantity button {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
+    font-size: 30px;
+    font-weight: 400;
+    position: absolute;
+    top: 0
+}
+
+#modal-customize-item .quantity button:first-child {
+    left: 0
+}
+
+#modal-customize-item .quantity button:last-child {
+    right: 0
+}
+
+#modal-customize-item .quantity p {
+    width: 100%;
+    line-height: 38px;
+    font-weight: 700;
+    vertical-align: middle;
+    margin: 0;
+    border-top: 1px solid #b2b2b2;
+    border-bottom: 1px solid #b2b2b2;
+    background-color: #fff
+}
+
+[data-customize]#modal-customize-item .quantity {
+    float: left
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-customize-item .quantity {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto
+    }
+
+    [data-customize]#modal-customize-item .quantity {
+        width: 100%;
+        float: none
+    }
+}
+
+#modal-customize-item #add-to-cart {
+    float: none;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto 0
+}
+
+[data-customize]#modal-customize-item #add-to-cart {
+    position: relative;
+    margin: 0;
+    height: 40px;
+    float: right;
+    width: 200px
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-customize-item #add-to-cart {
+        position: relative
+    }
+
+    [data-customize]#modal-customize-item #add-to-cart {
+        float: none;
+        width: 100%;
+        max-width: 500px;
+        margin: 20px auto 0
+    }
+}
+
+#modal-customize-item .customization {
+    vertical-align: top;
+    text-align: left;
+    position: relative;
+    width: 100%;
+    top: 0;
+    right: 0;
+    height: 100%
+}
+
+[data-customize]#modal-customize-item .customization {
+    position: absolute;
+    width: 68%;
+    padding-bottom: 60px;
+    overflow-y: hidden
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-customize-item .customization {
+        position: relative;
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+        max-width: 500px
+    }
+
+    [data-customize]#modal-customize-item .customization {
+        position: relative;
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+        max-width: 500px;
+        padding-bottom: 0
+    }
+}
+
+#modal-customize-item .customization h4 {
+    margin: 10px 0;
+    display: none
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-customize-item .customization h4 {
+        display: block
+    }
+}
+
+#modal-customize-item .customization li {
+    position: relative;
+    padding: 15px 0;
+    background-color: grey;
+    color: #f4f2f1;
+    margin: 0 0 10px 0
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-customize-item .customization li {
+        padding: 10px 0
+    }
+}
+
+#modal-customize-item .customization li:last-child {
+    margin: 0
+}
+
+#modal-customize-item .choice {
+    margin: 0 10px 10px 60px;
+    padding: 0 0 0 140px;
+    position: relative
+}
+
+@media (max-width: 500px) {
+    #modal-customize-item .choice {
+        padding: 0
+    }
+}
+
+@media (max-width: 820px) {
+    #modal-customize-item .choice::after {
+        margin: 0 0 0 20px
+    }
+}
+
+#modal-customize-item .choice.choice-apply-all {
+    margin: 0 0 0 60px;
+    padding: 0
+}
+
+@media (max-width: 820px) {
+    #modal-customize-item .choice.choice-apply-all {
+        margin: 0 10px
+    }
+}
+
+[data-customize=chicken]#modal-customize-item .choice:nth-child(3) {
+    display: none
+}
+
+[data-customize=drink]#modal-customize-item .choice:nth-child(2) {
+    display: none
+}
+
+@media (max-width: 820px) {
+    #modal-customize-item .choice {
+        margin: 5px 10px
+    }
+}
+
+#modal-customize-item .choice .label {
+    width: 130px;
+    height: 40px;
+    line-height: 40px;
+    position: absolute;
+    top: 0;
+    left: 0
+}
+
+@media (max-width: 500px) {
+    #modal-customize-item .choice .label {
+        display: block;
+        width: 100%;
+        position: static;
+        height: 20px;
+        line-height: 20px
+    }
+}
+
+#modal-customize-item .choice .custom-dropdown {
+    width: 49%;
+    margin: 0 1% 0 0;
+    float: left
+}
+
+#modal-customize-item .choice .custom-dropdown + .custom-dropdown {
+    margin: 0
+}
+
+@media (max-width: 360px) {
+    #modal-customize-item .choice .custom-dropdown {
+        width: 100%;
+        margin: 5px 0
+    }
+}
+
+#modal-customize-item .cart-item-count {
+    position: absolute;
+    width: 50px;
+    text-align: center;
+    background-color: #f4f2f1;
+    color: grey;
+    padding: 3px;
+    font-size: 14px
+}
+
+#modal-customize-item .cart-item-count .cart-item-number {
+    font-weight: 700;
+    margin: 0 0 0 5px
+}
+
+@media (max-width: 820px) {
+    #modal-customize-item .cart-item-count {
+        position: relative
+    }
+}
+
+#modal-customize-item .customize-section {
+    overflow-y: auto;
+    margin: 0;
+    list-style-type: none;
+    padding: 0;
+    display: none
+}
+
+[data-customize]#modal-customize-item .customize-section {
+    height: 100%;
+    display: block
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-customize-item .customize-section {
+        height: auto;
+        margin: 0 0 20px 0
+    }
+}
+
+#modal-customize-item p {
+    margin: 0
+}
+
+#modal-customize-item h6 {
+    font-size: 16px;
+    margin: 0
+}
+
+#modal-customize-item ul {
+    text-align: left;
+    margin: 10px 0 10px -20px
+}
+
+#modal-customize-item .checkbox {
+    font-weight: 700;
+    font-size: 14px
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-confirm-add-cart .modal-content-box, #modal-message .modal-content-box {
+        overflow: hidden;
+        width: 100%;
+        min-width: 300px
+    }
+}
+
+#modal-confirm-add-cart .modal-content-box .modal-content, #modal-message .modal-content-box .modal-content {
+    margin: 10px 20px 10px
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-confirm-add-cart .modal-content-box .modal-content, #modal-message .modal-content-box .modal-content {
+        margin: 60px auto;
+        position: relative
+    }
+}
+
+#modal-confirm-add-cart .modal-content-box .close-nav, #modal-message .modal-content-box .close-nav {
+    background-color: transparent;
+    border: 0
+}
+
+#modal-confirm-add-cart .modal-content-box .button-close::before, #modal-message .modal-content-box .button-close::before {
+    background-image: url(//static.kfc.com.my/images/general/btn-close-grey.png?v=1.8.62)
+}
+
+#modal-confirm-add-cart .buttons, #modal-message .buttons {
+    text-align: center;
+    margin: 20px 0
+}
+
+#modal-confirm-add-cart .buttons button, #modal-message .buttons button {
+    display: inline-block;
+    width: 140px;
+    margin: 5px 5px
+}
+
+#modal-confirm-add-cart a, #modal-message a {
+    display: inline
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-loading .modal-content-box {
+        height: auto;
+        width: 100%;
+        margin-top: 50%
+    }
+}
+
+#modal-loading .loading-screen {
+    display: block;
+    position: relative;
+    height: auto
+}
+
+#modal-loading .modal-content {
+    top: 0;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+    margin: 40px 0 30px
+}
+
+#modal-loading .modal-content p {
+    color: #c41230
+}
+
+#modal-payment-details {
+    position: fixed;
+    height: 100%
+}
+
+#modal-payment-details .modal-content {
+    height: 100%
+}
+
+#modal-payment-details h5 {
+    font-size: inherit;
+    margin: 0;
+    padding: 20px 20px 10px
+}
+
+#modal-payment-details button {
+    padding: 0;
+    width: 100%
+}
+
+#modal-payment-details button:last-child {
+    font-size: 14px
+}
+
+@-webkit-keyframes addedtocart {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0)
+    }
+    20% {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1)
+    }
+    40% {
+        -webkit-transform: scale(.95);
+        transform: scale(.95)
+    }
+    60% {
+        -webkit-transform: scale(1.03);
+        transform: scale(1.03)
+    }
+    80% {
+        -webkit-transform: scale(.99);
+        transform: scale(.99)
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+}
+
+@keyframes addedtocart {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0)
+    }
+    20% {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1)
+    }
+    40% {
+        -webkit-transform: scale(.95);
+        transform: scale(.95)
+    }
+    60% {
+        -webkit-transform: scale(1.03);
+        transform: scale(1.03)
+    }
+    80% {
+        -webkit-transform: scale(.99);
+        transform: scale(.99)
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+}
+
+#modal-addedtocart {
+    position: fixed;
+    display: block;
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%);
+    -webkit-transition: -webkit-transform 0s .3s;
+    transition: -webkit-transform 0s .3s;
+    transition: transform 0s .3s;
+    transition: transform 0s .3s, -webkit-transform 0s .3s;
+    height: 100%
+}
+
+#modal-addedtocart .overlay {
+    position: absolute;
+    display: block
+}
+
+#modal-addedtocart .modal-content-box {
+    width: initial;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    overflow: visible
+}
+
+#modal-addedtocart .modal-content {
+    margin: 0;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+    box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+    border-radius: 4px;
+    background-color: #fff;
+    padding: 20px;
+    -webkit-animation-duration: .3s;
+    animation-duration: .3s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear
+}
+
+#modal-addedtocart .header {
+    margin: 0
+}
+
+#modal-addedtocart .header img {
+    max-width: 54px
+}
+
+#modal-addedtocart p {
+    margin: 20px auto 0 auto;
+    color: #c41230
+}
+
+#modal-addedtocart.visible {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s
+}
+
+#modal-addedtocart.visible .modal-content {
+    -webkit-animation-name: addedtocart;
+    animation-name: addedtocart;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1)
+}
+
+#modal-store-closed .modal-content {
+    margin: 0 20px 30px 20px
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-store-closed .modal-content {
+        margin: 60px 10px 30px 10px
+    }
+}
+
+#modal-store-closed .header {
+    margin: 0
+}
+
+#modal-tnc .heading {
+    margin: 0 auto 30px auto
+}
+
+#modal-tnc p, #modal-tnc ul {
+    text-align: left
+}
+
+#modal-success {
+    position: fixed;
+    height: 100%
+}
+
+#modal-success .overlay {
+    display: block
+}
+
+#modal-success .modal-content-box {
+    width: initial;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    overflow: visible
+}
+
+#modal-success .modal-content {
+    margin: 0;
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+    box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+    border-radius: 4px;
+    background-color: #fff;
+    padding: 20px
+}
+
+#modal-success p {
+    color: #c41230;
+    font-size: 20px;
+    font-weight: 700;
+    min-width: 200px
+}
+
+@media only screen and (max-width: 749px) {
+    html[data-modal=welcome] {
+        height: 100%
+    }
+
+    html[data-modal=welcome] #modals, html[data-modal=welcome] body {
+        height: 100%
+    }
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-welcome {
+        position: fixed;
+        height: 100%
+    }
+
+    #modal-welcome .overlay {
+        display: block;
+        opacity: .8
+    }
+}
+
+@media only screen and (max-width: 408px) {
+    #modal-welcome {
+        position: static;
+        overflow: hidden
+    }
+
+    #modal-welcome .overlay {
+        display: none
+    }
+}
+
+#modal-welcome .close-nav {
+    background-color: #222;
+    height: auto;
+    margin-top: -1px;
+    position: relative
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-welcome .close-nav {
+        border-bottom: 0
+    }
+
+    #modal-welcome .close-nav:after {
+        display: none
+    }
+}
+
+#modal-welcome .button-close {
+    position: absolute;
+    right: 0;
+    top: 0
+}
+
+#modal-welcome h5, #modal-welcome p {
+    margin: 0
+}
+
+#modal-welcome h5 {
+    font-size: 23px;
+    padding: 10px 50px
+}
+
+@media only screen and (max-width: 408px) {
+    #modal-welcome h5 {
+        padding: 10px 44px;
+        font-size: 20px
+    }
+}
+
+#modal-welcome .modal-content-box {
+    overflow: hidden;
+    max-width: 650px;
+    width: 90%;
+    background-color: #222
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-welcome .modal-content-box {
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        max-width: 450px
+    }
+}
+
+@media only screen and (max-width: 408px) {
+    #modal-welcome .modal-content-box {
+        top: 0;
+        left: 0;
+        -webkit-transform: initial;
+        -ms-transform: initial;
+        transform: initial;
+        width: 100%;
+        height: 100%
+    }
+}
+
+#modal-welcome .modal-content-box .button-close:before {
+    background-image: url(//static.kfc.com.my/images/general/btn-close-white.png?v=1.8.62)
+}
+
+#modal-welcome .header-content {
+    color: #fff
+}
+
+#modal-welcome .header-content p {
+    padding: 0 20px 20px;
+    font-weight: 600;
+    font-size: 15px
+}
+
+#modal-welcome .modal-content {
+    margin: 0;
+    background-image: url(//static.kfc.com.my/images/landing/best-seller/background-texture.jpg?v=1.8.62);
+    background-repeat: repeat-y;
+    background-size: 100%;
+    background-position: center;
+    padding: 30px 0
+}
+
+@media only screen and (max-width: 408px) {
+    #modal-welcome .modal-content {
+        padding: 15px 0;
+        height: 100%
+    }
+}
+
+#modal-welcome .background {
+    position: absolute;
+    width: 100%;
+    bottom: -9px
+}
+
+#modal-welcome .background > img {
+    position: absolute
+}
+
+#modal-welcome .background .left {
+    left: -65px;
+    width: 200px;
+    bottom: 0
+}
+
+#modal-welcome .background .right {
+    right: -44px;
+    width: 150px;
+    bottom: -30px
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-welcome .background {
+        display: none
+    }
+}
+
+#modal-welcome p.steps {
+    padding: 0 20px 20px;
+    font-weight: 700
+}
+
+@media only screen and (max-width: 408px) {
+    #modal-welcome p.steps {
+        padding: 0 10px 10px
+    }
+}
+
+#modal-welcome .row {
+    position: relative
+}
+
+#modal-welcome .row > div {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-welcome .row > div {
+        margin: 0 1%
+    }
+}
+
+#modal-welcome .row p {
+    color: #a8162c;
+    font-weight: 700;
+    width: 90px
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-welcome .row .icon {
+        width: 28%;
+        max-width: 95px
+    }
+
+    #modal-welcome .row .icon img {
+        width: 65px
+    }
+}
+
+@media only screen and (max-width: 408px) {
+    #modal-welcome .row .icon {
+        width: 90%;
+        max-width: 205px;
+        text-align: left;
+        margin: 5px 0
+    }
+
+    #modal-welcome .row .icon img {
+        vertical-align: middle;
+        margin-right: 10px;
+        width: 65px
+    }
+
+    #modal-welcome .row .icon p {
+        display: inline-block;
+        width: auto;
+        vertical-align: middle
+    }
+}
+
+#modal-welcome .row .arrow {
+    position: relative;
+    top: -18px
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-welcome .row .arrow {
+        margin: 0
+    }
+}
+
+@media only screen and (max-width: 408px) {
+    #modal-welcome .row .arrow {
+        display: none
+    }
+}
+
+#modal-welcome .ordernow {
+    margin: 30px auto 0;
+    padding: 0 60px;
+    height: 50px
+}
+
+@media only screen and (max-width: 408px) {
+    #modal-welcome .ordernow {
+        margin: 20px auto 0
+    }
+}
+
+#modal-cny-tnc, #modal-kaki-faq, #modal-kaki-tnc {
+    text-align: left
+}
+
+#modal-cny-tnc .modal-content-box, #modal-kaki-faq .modal-content-box, #modal-kaki-tnc .modal-content-box {
+    overflow: hidden
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-cny-tnc .modal-content-box, #modal-kaki-faq .modal-content-box, #modal-kaki-tnc .modal-content-box {
+        overflow: auto
+    }
+}
+
+#modal-cny-tnc .tnc-content, #modal-kaki-faq .tnc-content, #modal-kaki-tnc .tnc-content {
+    max-height: 350px;
+    overflow: auto
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-cny-tnc .tnc-content, #modal-kaki-faq .tnc-content, #modal-kaki-tnc .tnc-content {
+        max-height: initial;
+        overflow: hidden
+    }
+}
+
+#modal-rewards {
+    text-align: left
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-rewards .modal-content-box {
+        overflow-x: hidden
+    }
+}
+
+#modal-rewards .close-nav {
+    border-bottom: 2px solid #b2b2b2;
+    height: 50px;
+    line-height: 49px;
+    color: #4d4d4d;
+    background-color: #f4f2f1
+}
+
+#modal-rewards .close-nav h3 {
+    display: inline-block;
+    margin: 0 20px
+}
+
+#modal-rewards .close-nav .button-close {
+    width: 55px;
+    height: 50px
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-rewards .close-nav .button-close:before {
+        background-image: url(//static.kfc.com.my/images/general/btn-close-grey.png?v=1.8.62)
+    }
+}
+
+#modal-rewards .close-nav::after {
+    display: none
+}
+
+#modal-rewards .modal-content {
+    max-height: 450px;
+    overflow: auto;
+    margin: 0;
+    padding: 10px;
+    width: 100%
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-rewards .modal-content {
+        margin: 60px 10px 30px 10px
+    }
+}
+
+#modal-rewards .box {
+    position: relative;
+    padding: 10px
+}
+
+#modal-rewards .box + .box {
+    border-top: 1px solid #b2b2b2;
+    padding-top: 20px
+}
+
+#modal-rewards h6 {
+    font-size: 18px;
+    margin: 0 0 10px
+}
+
+#modal-rewards .row > div {
+    display: inline-block;
+    vertical-align: top
+}
+
+#modal-rewards .image {
+    width: 30%
+}
+
+#modal-rewards .details {
+    width: 70%;
+    padding-left: 20px
+}
+
+#modal-rewards button {
+    margin: 0 auto
+}
+
+#modal-address .modal-content-box .actions #modal-rewards button:first-child, #modal-confirm-add-cart .buttons #modal-rewards .cancel, #modal-message .buttons #modal-rewards .cancel, #modal-rewards #modal-address .modal-content-box .actions button:first-child, #modal-rewards #modal-confirm-add-cart .buttons .cancel, #modal-rewards #modal-message .buttons .cancel, #modal-rewards .red-outline-btn {
+    background-color: #fff;
+    color: #f11230
+}
+
+#modal-rewards ul {
+    margin: 5px 0;
+    padding: 0
+}
+
+#modal-rewards .terms-and-conditions {
+    color: #c41230;
+    font-size: 12px;
+    margin: 10px 0
+}
+
+#modal-rewards .terms-and-conditions a {
+    color: #c41230;
+    font-size: 12px;
+    margin: 10px 0;
+    font-style: italic;
+    text-decoration: none;
+    font-weight: 400
+}
+
+#modal-redeem-reward h5 {
+    font-size: 18px
+}
+
+#modal-kaki-winner .header {
+    margin: 0 0 10px 0
+}
+
+#modal-kaki-winner .small {
+    margin: 20px 0 0 0;
+    font-size: 12px
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-kaki-winner p br {
+        display: none
+    }
+}
+
+#modal-addhope-faq {
+    text-align: left
+}
+
+#modal-addhope-faq .modal-content-box {
+    max-width: 700px;
+    max-height: 80%
+}
+
+#modal-addhope-faq ol, #modal-addhope-faq ul {
+    margin: 0;
+    padding: 0 0 0 20px
+}
+
+#modal-addhope-faq .main > li {
+    margin: 15px 0
+}
+
+#modal-addhope-faq .main > li > p:first-child {
+    font-weight: 700
+}
+
+#modal-addhope-faq a {
+    display: inline;
+    margin: 0;
+    font-weight: initial;
+    color: #00f
+}
+
+#modal-voucher-payment-unsuccessful .modal-content p {
+    margin: 10px auto 20px;
+    width: 90%;
+    max-width: 350px
+}
+
+#modal-voucher-payment-unsuccessful .error {
+    color: #f11230;
+    font-weight: 700
+}
+
+#modal-voucher-payment-unsuccessful .phone {
+    color: #c41230;
+    font-size: 30px;
+    margin: 0 auto;
+    font-weight: 700
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-voucher-payment-unsuccessful .phone {
+        font-size: 32px;
+        text-align: center
+    }
+}
+
+#modal-voucher-payment-unsuccessful a[href^=tel] {
+    display: inline-block;
+    color: inherit;
+    text-decoration: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0
+}
+
+#modal-voucher-address .modal-content {
+    margin: 10px 0
+}
+
+#modal-voucher-address .modal-content .header {
+    margin: 0
+}
+
+#modal-voucher-address button {
+    margin: 0 auto 10px auto
+}
+
+#modal-voucher-address .address-list {
+    background-color: #f4f2f1;
+    padding: 0 10px;
+    margin: 10px 0 20px;
+    max-height: 200px;
+    overflow-y: auto;
+    border-top: 1px solid #b2b2b2;
+    border-bottom: 1px solid #b2b2b2
+}
+
+#modal-voucher-address table {
+    border-spacing: 0 15px;
+    border-collapse: separate
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-voucher-address table {
+        max-height: 45%;
+        width: 100%
+    }
+}
+
+#modal-voucher-address table tr {
+    background-color: #fff;
+    margin: 0 0 10px;
+    text-align: left;
+    padding: 10px 15px;
+    cursor: pointer
+}
+
+#modal-voucher-address table tr:last-child {
+    margin: 0
+}
+
+#modal-voucher-address table tr td {
+    padding: 10px 5px;
+    vertical-align: top
+}
+
+#modal-voucher-address table tr td:nth-child(2) {
+    width: 100%
+}
+
+#modal-voucher-address .error {
+    color: #f11230;
+    font-weight: 700
+}
+
+#modal-voucher-address .checkbox {
+    padding: 0
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-upsell {
+        height: 100%;
+        position: fixed
+    }
+}
+
+#modal-upsell .modal-content-box {
+    max-width: 750px;
+    background-color: #f4f2f1
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-upsell .modal-content-box {
+        height: 100%
+    }
+}
+
+#modal-upsell .header {
+    width: 100%;
+    background-color: #000;
+    line-height: 50px;
+    font-size: 27px;
+    color: #fff;
+    font-weight: 700
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-upsell .header {
+        font-size: 20px
+    }
+}
+
+@media (max-width: 360px) {
+    #modal-upsell .header {
+        font-size: 18px
+    }
+}
+
+#modal-upsell button {
+    margin: 20px auto;
+    height: 40px
+}
+
+#modal-upsell button[data-count]:after {
+    top: 5px
+}
+
+#modal-upsell button.button-close {
+    position: relative;
+    margin: 5px 0;
+    right: 0
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-upsell button.button-close:before {
+        background-image: url(//static.kfc.com.my/images/general/btn-close-grey.png?v=1.8.62)
+    }
+}
+
+#modal-upsell #modal-upsell-checkout {
+    background-color: #fff;
+    color: #f11230;
+    border: 1px solid;
+    margin: 10px auto 20px auto;
+    height: 50px;
+    padding: 0 50px
+}
+
+#modal-upsell .float-container {
+    position: relative;
+    margin: 10px 0;
+    width: auto
+}
+
+#modal-upsell .card-wrapper {
+    position: relative;
+    margin: 0 50px;
+    overflow: hidden;
+    padding: 10px
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-upsell .card-wrapper {
+        margin: 0 10px
+    }
+}
+
+#modal-upsell .card-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transition: -webkit-transform .3s;
+    transition: -webkit-transform .3s;
+    transition: transform .3s;
+    transition: transform .3s, -webkit-transform .3s
+}
+
+#modal-upsell .card-container .card {
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-upsell .card-container .card {
+        padding: 5px;
+        -webkit-box-shadow: none;
+        box-shadow: none
+    }
+}
+
+#modal-upsell .card-container .card .card-content {
+    padding: 1px 10px
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-upsell .card-container .card .card-content {
+        -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+        box-shadow: 0 0 5px rgba(0, 0, 0, .2)
+    }
+}
+
+@media only screen and (max-width: 749px) {
+    #modal-upsell .card-container .card button {
+        margin: 10px auto
+    }
+}
+
+@media (max-width: 350px) {
+    #modal-upsell .card-container .card button {
+        font-size: 16px
+    }
+}
+
+#modal-upsell .slidernav {
+    background-color: transparent;
+    position: absolute;
+    width: 70px;
+    height: 70px
+}
+
+#modal-upsell .slidernav.next {
+    right: 0
+}
