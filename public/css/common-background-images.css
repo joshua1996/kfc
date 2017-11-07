@@ -1,0 +1,171 @@
+.red-btn {
+    color: #fff;
+    background-color: #f11230;
+    padding: 0;
+    font-weight: 700;
+    font-size: 18px;
+    -webkit-transition: background-color .1s;
+    transition: background-color .1s;
+    border-radius: 1px;
+    height: 40px;
+    line-height: 40px;
+    position: relative
+}
+
+.red-btn:hover {
+    background-color: #c41230
+}
+
+.red-outline-btn {
+    height: 40px;
+    line-height: 38px;
+    border: 1px solid #f11230;
+    background-color: transparent;
+    color: #f11230;
+    font-size: 18px;
+    font-weight: 700;
+    -webkit-transition: background-color .1s;
+    transition: background-color .1s
+}
+
+.red-outline-btn:hover {
+    background-color: #c41230;
+    color: #fff
+}
+
+.count-indicator {
+    display: block;
+    background-color: #fe8900;
+    color: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    top: 10px;
+    right: -15px;
+    font-size: 14px
+}
+
+.checkbox:after {
+    background-image: url(//static.kfc.com.my/images/general/btn-tick.png?v=1.8.62)
+}
+
+.select select {
+    background-image: url(//static.kfc.com.my/images/general/icon-arrow-down.png?v=1.8.62)
+}
+
+.slidernav.prev {
+    background-image: url(//static.kfc.com.my/images/general/icon-previous.png?v=1.8.62)
+}
+
+.slidernav.prev:hover {
+    background-image: url(//static.kfc.com.my/images/general/icon-previous-red.png?v=1.8.62)
+}
+
+.slidernav.next {
+    background-image: url(//static.kfc.com.my/images/general/icon-next.png?v=1.8.62)
+}
+
+.slidernav.next:hover {
+    background-image: url(//static.kfc.com.my/images/general/icon-next-red.png?v=1.8.62)
+}
+
+.card-container .card.is-new .card-content::after {
+    background-image: url(//static.kfc.com.my/images/general/new-icon-en.png?v=1.8.62)
+}
+
+.card-container .card .toggle-info {
+    background-image: url(//static.kfc.com.my/images/general/icon-info.png?v=1.8.62)
+}
+
+[data-locale=bm] .card.is-new .card-content::after {
+    background-image: url(//static.kfc.com.my/images/general/new-icon-bm.png?v=1.8.62)
+}
+
+#login:before {
+    background-image: url(//static.kfc.com.my/images/general/login-icon.png?v=1.8.62)
+}
+
+#mainmenu #nav-logo {
+    background-image: url(//static.kfc.com.my/images/general/kfc-logo-colonel.png?v=1.8.62)
+}
+
+@media only screen and (max-width:749px) {
+    #mainmenu #nav-logo {
+        background-image: url(//static.kfc.com.my/images/general/kfc-logo-text-white.png?v=1.8.62)
+    }
+}
+
+#mainmenu #nav-change-location {
+    background-image: url(//static.kfc.com.my/images/general/location-icon.png?v=1.8.62)
+}
+
+@media only screen and (max-width:749px) {
+    #mainmenu #nav-change-location {
+        background-image: url(//static.kfc.com.my/images/general/location-icon-mobile.png?v=1.8.62)
+    }
+}
+
+#mainmenu #nav-cart {
+    background-image: url(//static.kfc.com.my/images/general/cart-icon.png?v=1.8.62)
+}
+
+@media only screen and (max-width:749px) {
+    #mainmenu #nav-cart {
+        background-image: url(//static.kfc.com.my/images/general/cart-icon-mobile.png?v=1.8.62)
+    }
+}
+
+#mobile-nav .mobile-menu .expand::after {
+    background-image: url(//static.kfc.com.my/images/general/arrow-right-nav-menu-mobile.png?v=1.8.62)
+}
+
+#mobile-nav .mobile-menu .expand.active::after {
+    background-image: url(//static.kfc.com.my/images/general/arrow-down-nav-menu-mobile.png?v=1.8.62)
+}
+
+#mobile-nav .mobile-nav-login::before,
+#mobile-nav .mobile-nav-logout::before {
+    background-image: url(//static.kfc.com.my/images/general/login-icon-mob.png?v=1.8.62)
+}
+
+.halal-logo {
+    background-image: url(//static.kfc.com.my/images/general/halal-logo-white.png?v=1.8.62)
+}
+
+@media only screen and (max-width:749px) {
+    .footer-links .footer-list .title::after {
+        background-image: url(//static.kfc.com.my/images/general/arrow-down-nav-menu-mobile.png?v=1.8.62)
+    }
+}
+
+@media only screen and (max-width:749px) {
+    .footer-links .footer-list.active .title:after {
+        background-image: url(//static.kfc.com.my/images/general/arrow-up-nav-menu-mobile.png?v=1.8.62)
+    }
+}
+
+#modal-cart .modal-content-box .header::before {
+    background-image: url(//static.kfc.com.my/images/general/cart-grey.png?v=1.8.62)
+}
+
+#modal-cart .subtotal td:first-child div::before {
+    background-image: url(//static.kfc.com.my/images/general/arrow-down-nav-menu-mobile.png?v=1.8.62)
+}
+
+#modal-cart .checkout-button span::before {
+    background-image: url(//static.kfc.com.my/images/general/cart-icon-mobile.png?v=1.8.62)
+}
+
+#cart-item-container>li.showCustomize .toggle-customize {
+    background-image: url(//static.kfc.com.my/images/delivery/icon-drop-minus.png?v=1.8.62)
+}
+
+#cart-item-container .cart-discard-button::before {
+    background-image: url(//static.kfc.com.my/images/delivery/btn-dustbin.png?v=1.8.62)
+}
+
+#cart-item-container .cart-details-container .toggle-customize {
+    background-image: url(//static.kfc.com.my/images/delivery/icon-drop-plus.png?v=1.8.62)
+}
