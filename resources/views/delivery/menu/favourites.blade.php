@@ -97,10 +97,22 @@
         </div>
     </div>
 @section('script')
-    <script>
 
+    <script !src="">
+        $(document).ready(function () {
+            $('a[data-tab="combo"]').on('click', function () {
+            });
 
+            $('a[data-tab="alacarte"]').on('click', function () {
+            });
 
+            $('a[data-tab="favourites"]').on('click', function () {
+            });
+        });
+    </script>
+
+    <script type="application/json">
+        {!! $df !!}
     </script>
 @endsection
 

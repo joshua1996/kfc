@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use App\bannerModel;
 use App\deliveryfoodModel;
 
@@ -30,6 +31,7 @@ class mainController extends Controller
     {
         $deliveryfood = new deliveryfoodModel();
         $deliveryfoodResult = $deliveryfood->where('visible', '=', true)->get();
-        return view('delivery.menu.favourites', ['deliveryFood' => $deliveryfoodResult]);
+       // $deliveryfoodResultArr = $deliveryfood->where('visible', '=', true);
+        return view('delivery.menu.favourites', ['deliveryFood' => $deliveryfoodResult, 'df' => json_encode($deliveryfoodResult)]);
     }
 }
