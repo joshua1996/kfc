@@ -1515,7 +1515,7 @@
 
 #modal-cart .price {
     cursor: pointer;
-    background-color: #000;
+    background-color: #ff3333;
     color: #f4f2f1;
     padding: 10px 0
 }

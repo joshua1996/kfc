@@ -8,10 +8,16 @@
     <script src="{{ URL::asset('js/jquery-3.2.1.js') }}"></script>
     <script src="{{ URL::asset('js/jssor.slider.min.js') }}"></script>
     <script src="{{ URL::asset('js/home.js') }}"></script>
+    <script src="{{ URL::asset('js/handlebars-v4.0.11.js') }}"></script>
+    <script src="{{ URL::asset('js/underscore.js') }}"></script>
+
     <link href="{{ URL::asset('css/common.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/common-background-images.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('css/index.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/modal.css') }}" rel="stylesheet">
+    @if(Route::current()->getName() == 'home')
+        <link href="{{ URL::asset('css/index.css') }}" rel="stylesheet">
+    @endif
+
     <style>
         #map {
             height: 400px;
@@ -19,12 +25,23 @@
         }
     </style>
     @section('header') @show
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <script>
+        $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            })
+        });
+    </script>
 </head>
 
 <body>
 
 <div id="app">
-    <div id="main" data-guest="1" data-email="" data-uid="10809424" data-locale="en" data-fbid="1061678997264701"
+    <div id="main" data-guest="{{ Auth::guard()->check() ? '0':'1' }}" data-email="" data-uid="10809424" data-locale="en" data-fbid="1061678997264701"
          data-maps="AIzaSyCpsAzhlFe87KyOdqcPsMhchaUanI135tA"
          class="">
         {{--has-location--}}
@@ -42,7 +59,8 @@
                         <button id="login">Log In</button>
                         <div id="profile-navigation">
                             <a id="username" href="/dashboard">
-                                <!---->
+                                @if(Auth::guard()->check()) {{ Auth::guard()->user()->firstName}} @endif
+                            <!---->
                             </a>
                             <div class="navlist">
                                 <a href="/dashboard/profile">
@@ -66,7 +84,8 @@
                                     <span>Rewards</span>
                                     <!---->
                                 </a>
-                                <form data-tab="profile" method="POST" action="api/user/logout">
+                                <form data-tab="profile" method="POST" action="{{ route('logout') }}">
+                                    {{ csrf_field() }}
                                     <input type="hidden" name="redirect" value="/">
                                     <button>
                                         <img src="https://static.kfc.com.my/images/rewards/icon-logout-red.png?v1.8.62">
@@ -77,6 +96,7 @@
                             </div>
                         </div>
                     </div>
+                    p
                 </div>
             </div>
             <div id="mainmenu" class="container">
@@ -88,7 +108,7 @@
                     <button id="nav-order-now">Order Now</button>
                 </div>
                 <button id="nav-change-location"></button>
-                <button id="nav-cart" data-total="0"></button>
+                <button id="nav-cart" data-total="{{ count(session('cartItemID')) - 1 }}"></button>
             </div>
         </div>
 
@@ -104,9 +124,10 @@
                             <tbody>
                             <tr>
                                 <td>
-                                    <div class="social-icons hide-in-mobile"><a href="https://www.facebook.com/KFCMalaysia"
-                                                                                data-track-label="footer-social-facebook"
-                                                                                target="_blank"><img
+                                    <div class="social-icons hide-in-mobile"><a
+                                                href="https://www.facebook.com/KFCMalaysia"
+                                                data-track-label="footer-social-facebook"
+                                                target="_blank"><img
                                                     src="https://static.kfc.com.my/images/general/social-logo-fb-web.png?v1.8.62"
                                                     class="icon facebook"></a><a
                                                 href="https://www.instagram.com/kfcmalaysia/"
@@ -128,7 +149,8 @@
                                                     placeholder="Get latest promotions and news." type="email"></div>
                                         <button id="subscribe-btn" type="submit">Subscribe</button>
                                     </form>
-                                    <div class="input-container" style="display: none;"><p>You have subscribed.</p></div>
+                                    <div class="input-container" style="display: none;"><p>You have subscribed.</p>
+                                    </div>
                                 </td>
                                 <td>
                                     <div class="social-icons hide-in-desktop">
@@ -229,7 +251,8 @@
                     <button class="button-close">Back to Menu</button>
                 </div>
                 <div class="modal-content empty">
-                    <ul id="cart-item-container" style="display: none;"><!---->
+                    <ul id="cart-item-container"
+                        style="display: {{ count(session('cartItemID')) > 0 ? 'block': 'none'  }};"><!---->
                         <li class="special-request" style="display: none;">
                             <div class="choice clearafter">
                                 <div class="label">Condiments</div>
@@ -255,7 +278,8 @@
                                                         src="https://static.kfc.com.my/images/menu/delivery-chewy-cheese-sour-creamball.png?v1.8.62"
                                                         alt="5-pc Chewy Cheese Sour Cream &amp; Onion"></div>
                                         </div>
-                                        <div class="meta"><h3>5-pc Chewy Cheese Sour Cream &amp; Onion</h3><h4>RM 6.90</h4>
+                                        <div class="meta"><h3>5-pc Chewy Cheese Sour Cream &amp; Onion</h3><h4>RM
+                                                6.90</h4>
                                             <button data-count="0" class="add-cart">Add to Cart</button>
                                         </div>
                                     </div>
@@ -282,13 +306,17 @@
                                 </div><!----></div>
                         </div>
                     </div>
-                    <div id="cart-empty-content"><img
+
+                    <div id="cart-empty-content"
+                         style="display: {{ count(session('cartItemID')) ==0 ? 'block': 'none' }}"><img
                                 src="https://static.kfc.com.my/images/delivery/icon-empty-cart.png?v1.8.62">
                         <p>Your Cart is Empty.</p>
                         <div class="actions">
                             <button>Order Now</button>
                         </div>
                     </div>
+
+
                 </div>
                 <div id="cart-footer" class="fixed-container" style="display: none;">
                     <div id="cart-rewards" data-show="">
@@ -317,7 +345,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="price" style="display: none;">
+                    <div class="price" style="">
                         <table>
                             <tbody>
                             <tr style="display: none;">
@@ -345,7 +373,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <button class="checkout-button" style="display: none;"><span>Checkout</span></button>
+                    <button class="checkout-button" style=""><span>Checkout</span></button>
                 </div>
             </div>
         </div>
@@ -363,7 +391,8 @@
                         <p>Fill in the Delivery Address</p></div>
                     <div class="field">
                         <div class="input"><label>Unit/Level/Block/Building*</label><textarea
-                                    placeholder="Eg. F-13-01 Menara Indah" name="form.unit" maxlength="80"></textarea></div>
+                                    placeholder="Eg. F-13-01 Menara Indah" name="form.unit" maxlength="80"></textarea>
+                        </div>
                     </div>
                     <div class="filled-field"><p>, </p>
                         <p></p>
@@ -391,7 +420,8 @@
                     <div class="content-wrapper">
                         <div class="header"><img
                                     src="https://static.kfc.com.my/images/delivery/icon-advance-order.png?v1.8.62">
-                            <p class="error-message" style="display: none;">Due to unforeseen circumstances, <br>we are not
+                            <p class="error-message" style="display: none;">Due to unforeseen circumstances, <br>we are
+                                not
                                 able to deliver . Try another time instead.</p>
                             <h3>Advance Order</h3></div>
                         <div class="form clearafter">
@@ -442,7 +472,8 @@
                 </div>
                 <div class="modal-content">
                     <div class="content-wrapper check-location">
-                        <div class="header"><img src="https://static.kfc.com.my/images/delivery/icon-location.png?v1.8.62">
+                        <div class="header"><img
+                                    src="https://static.kfc.com.my/images/delivery/icon-location.png?v1.8.62">
                             <h3>Check Delivery Coverage</h3></div>
                         <div class="search-location">
                             <form class="search-bar">
@@ -477,9 +508,7 @@
                         {{--<div id="user-location-map" data-text="Loading" class="" style="display: none;"></div>--}}
 
                         <div id="map"></div>
-
-
-                        <p></p>
+                        <p class="placename"></p>
                         <p style="display: none;">Getting address...</p>
                         <button>Confirm</button>
                         <button class="anchor-button">Change Location</button>
@@ -496,7 +525,7 @@
         </div>
         <div id="modal-customize-item" class="modal">
             <div class="overlay"></div>
-            <form action="api/cart/add" method="POST" class="modal-content-box">
+            <form class="modal-content-box">
                 <div class="close-nav"><h3>Edit</h3>
                     <button type="button" class="button-close"></button>
                 </div>
@@ -504,7 +533,8 @@
                     <div class="overflow-container">
                         <div class="content-wrapper">
                             <div class="meal">
-                                <div class="image"><img src="https://static.kfc.com.my/images/menu/undefined?v1.8.62"></div>
+                                <div class="image"><img src="https://static.kfc.com.my/images/menu/undefined?v1.8.62">
+                                </div>
                                 <div class="details"><h6></h6>
                                     <ul></ul>
                                     <h6>RM </h6></div>
@@ -516,9 +546,9 @@
                     </div>
                     <div class="buttons">
                         <div class="quantity">
-                            <button type="button">−</button>
-                            <p>0</p>
-                            <button type="button">+</button>
+                            <button type="button" class="quantityminus">−</button>
+                            <p>1</p>
+                            <button type="button " class="quantityadd">+</button>
                         </div>
                         <button id="add-to-cart">Add to Cart</button>
                     </div>
@@ -539,7 +569,8 @@
                 </div>
                 <div class="modal-content">
                     <div class="content-wrapper">
-                        <div class="header"><img src="https://static.kfc.com.my/images/delivery/icon-location.png?v1.8.62">
+                        <div class="header"><img
+                                    src="https://static.kfc.com.my/images/delivery/icon-location.png?v1.8.62">
                             <p>Hi , Welcome Back!</p>
                             <h3></h3></div>
                     </div>
@@ -572,7 +603,8 @@
                                     src="https://static.kfc.com.my/images/delivery/icon-tracked-location.png?v1.8.62">
                             <!----><p>Delivery will take approximately<br><b><span id="delivery-eta"></span> minutes</b>.
                             </p>
-                            <p class="warning" style="display: none;">Your delivery location has been updated. Please note
+                            <p class="warning" style="display: none;">Your delivery location has been updated. Please
+                                note
                                 that menu prices may vary by location.</p></div>
                         <button>Order Now</button>
                         <div class="seperator">
@@ -596,13 +628,15 @@
                         <div class="header"><img
                                     src="https://static.kfc.com.my/images/delivery/icon-store-busy.png?v1.8.62"><!---->
                         </div>
-                        <p>Your location is within our coverage area for delivery. However, the store is not able to process
+                        <p>Your location is within our coverage area for delivery. However, the store is not able to
+                            process
                             your order right now due to unforeseen circumstances. We apologize for the inconvenience
                             caused.</p>
                         <div class="line"></div>
                         <button>Order In Advance</button>
                         <div class="seperator"><p>or</p></div>
-                        <button data-track-label="delivery-unavailable-use-another-location">Use Another Location</button>
+                        <button data-track-label="delivery-unavailable-use-another-location">Use Another Location
+                        </button>
                         <div class="seperator">
                             <div class="line"></div>
                             <p>or</p>
@@ -633,11 +667,13 @@
                         <button>Submit</button>
                     </form>
                     <div class="content-wrapper email-sent">
-                        <div class="header"><img src="https://static.kfc.com.my/images/login/icon-email-sent.png?v1.8.62">
+                        <div class="header"><img
+                                    src="https://static.kfc.com.my/images/login/icon-email-sent.png?v1.8.62">
                             <h3>Email Sent</h3></div>
                         <p>We've sent an email to</p>
                         <p id="email-sent"><b></b></p>
-                        <p>with a link to reset your password. Please check your spam box if you haven't received it.</p>
+                        <p>with a link to reset your password. Please check your spam box if you haven't received
+                            it.</p>
                         <button>Okay</button>
                     </div>
                 </div>
@@ -656,8 +692,10 @@
                     <button class="button-close"></button>
                 </div>
                 <div class="modal-content">
-                    <form method="POST" action="/api/user/login" class="content-wrapper"><input type="hidden"
-                                                                                                name="redirect" value="/">
+                    <form method="POST" action="{{ route('login') }}" class="content-wrapper"><input type="hidden"
+                                                                                                name="redirect"
+                                                                                                value="/">
+                        {{ csrf_field() }}
                         <div class="header"><img src="https://static.kfc.com.my/images/delivery/icon-login.png?v1.8.62">
                             <h3>Log In</h3></div>
                         <button id="fblogin" type="button">Log In With Facebook</button>
@@ -670,7 +708,7 @@
                         <div class="input"><input type="password" placeholder="Password" name="password">
                             <button type="button" class="forgot">Forgot?</button>
                         </div>
-                        <button>Submit</button>
+                        <button class="loginButton">Submit</button>
                     </form>
                     <div class="signuphere"><p>Don't have an account?</p>
                         <button>Sign Up</button>
@@ -692,7 +730,8 @@
                 </div>
                 <div class="modal-content">
                     <form method="POST" action="/api/user/login" class="content-wrapper"><input type="hidden"
-                                                                                                name="redirect" value="/">
+                                                                                                name="redirect"
+                                                                                                value="/">
                         <div class="header"><img src="https://static.kfc.com.my/images/delivery/icon-login.png?v1.8.62">
                             <h3>Member Checkout</h3></div>
                         <button id="fblogin" type="button">Log In With Facebook</button>
@@ -735,7 +774,8 @@
                         <p style="display: none;">We can’t seem to process your payment. Call us at <a
                                     href="tel:1300-222-888"><span class="phone">1300-222-888</span></a> for further
                             assistance.</p>
-                        <p style="display: none;">An error occurred while processing your payment. Please call KFC Delivery
+                        <p style="display: none;">An error occurred while processing your payment. Please call KFC
+                            Delivery
                             Hotline for more details. <br> <a href="tel:1300-222-888"><span
                                         class="phone">1300-222-888</span></a></p>
                         <div><p>An error occurred while processing payment via your credit card. How would you like to
@@ -759,10 +799,12 @@
                     <div class="content-wrapper">
                         <div class="header"><img
                                     src="https://static.kfc.com.my/images/delivery/icon-payment-fail.png?v1.8.62">
-                            <h3>Oops!<img src="https://static.kfc.com.my/images/delivery/icon-shockemoji.png?v1.8.62"></h3>
+                            <h3>Oops!<img src="https://static.kfc.com.my/images/delivery/icon-shockemoji.png?v1.8.62">
+                            </h3>
                         </div>
                         <p>An error occurred while processing your order and your credit card was charged.</p><br>
-                        <p>Please call us at <a href="tel:1300-222-888">1300-222-888</a> and we'll assist you right away.
+                        <p>Please call us at <a href="tel:1300-222-888">1300-222-888</a> and we'll assist you right
+                            away.
                         </p></div>
                 </div>
             </div>
@@ -775,7 +817,8 @@
                 </div>
                 <div class="modal-content">
                     <div class="content-wrapper">
-                        <div class="header"><img src="https://static.kfc.com.my/images/delivery/icon-sign-up.png?v1.8.62">
+                        <div class="header"><img
+                                    src="https://static.kfc.com.my/images/delivery/icon-sign-up.png?v1.8.62">
                             <h3>Sign Up</h3></div>
                         <div class="facebook-section">
                             <button id="fbsignup">Sign Up With Facebook</button>
@@ -788,28 +831,39 @@
                             <div class="line"></div>
                         </div>
                         <form method="POST" action="/api/user/register" class="form-section">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="table left">
                                 <div class="input"><input type="text" placeholder="First Name" name="firstname"></div>
-                                <div class="input"><input type="text" placeholder="Last Name" name="lastname"></div>
-                                <div class="input"><input type="text" placeholder="Phone Number" name="phone"></div>
+                                <div class="input"><input type="text" placeholder="Last Name" name="lastname" required></div>
+                                <div class="input"><input type="text" placeholder="Phone Number" name="phone" required></div>
                             </div>
                             <div class="table right">
-                                <div class="input"><input type="email" placeholder="Email Address" name="email"></div>
+                                <div class="input"><input type="email" placeholder="Email Address" name="email" required></div>
                                 <div class="input"><input type="password" maxlength="15"
-                                                          placeholder="Password (6 to 15 characters)" name="password"></div>
+                                                          placeholder="Password (6 to 15 characters)" name="password" required>
+                                </div>
                                 <div class="input"><input type="password" maxlength="15" placeholder="Retype Password"
-                                                          name="passwordConfirm"></div>
+                                                          name="passwordConfirm" required></div>
                             </div>
-                            <div class="table left"><!----></div>
+                            <div class="table left">
+
+                                {{--<div class="g-recaptcha" data-sitekey="6LfY1DsUAAAAABqJX4a7LdwsZhrNoM1F53dmB6Et"></div>--}}
+                                {!! Recaptcha::render() !!}
+                            </div>
                             <div class="table right">
                                 <div class="checkbox-group">
                                     <div class="checkbox"></div>
-                                    <p>I have read and agree to the <a href="/terms-and-condition" target="_blank">terms and
+                                    <p>@if ($errors->has('firstname'))
+                                            aa
+                                        @endif
+                                        I have read and agree to the <a href="/terms-and-condition" target="_blank">terms
+                                            and
                                             conditions</a>.</p></div>
                                 <div class="checkbox-group">
                                     <div data-checked="true" class="checkbox"></div>
                                     <p>I want to receive KFC offers &amp; updates.</p></div>
-                                <button>Submit</button>
+                                <button class="signupbutton">Submit</button>
+
                             </div>
                             <input type="hidden" name="redirect" value="/"></form>
                     </div>
@@ -829,9 +883,10 @@
                     <button class="button-close"></button>
                 </div>
                 <div class="modal-content">
-                    <form method="POST" action="/api/user/resetPassword" class="content-wrapper reset"><input type="hidden"
-                                                                                                              name="redirect"
-                                                                                                              value="/"><input
+                    <form method="POST" action="/api/user/resetPassword" class="content-wrapper reset"><input
+                                type="hidden"
+                                name="redirect"
+                                value="/"><input
                                 type="hidden" name="resetkey">
                         <div class="header"><img
                                     src="https://static.kfc.com.my/images/login/icon-reset-password.png?v1.8.62">
@@ -921,26 +976,33 @@
                                 <li>Limited delivery area only.</li>
                                 <li>Operation hours: 10.00am to 10.30pm (May vary depending on location).</li>
                                 <li>All prices are inclusive of 6% GST.</li>
-                                <li>Prices of this menu are applicable for KFC Delivery only and subject to change without
+                                <li>Prices of this menu are applicable for KFC Delivery only and subject to change
+                                    without
                                     prior notice.
                                 </li>
-                                <li>For large orders exceeding RM200, the estimated delivery time is within 2 hours.</li>
+                                <li>For large orders exceeding RM200, the estimated delivery time is within 2 hours.
+                                </li>
                                 <li>All products in the promotional bundles and sets are fixed.</li>
                                 <li>Meal deal for KFC Delivery and Dine In or Take Away may differ.</li>
-                                <li>To ensure rider safety, KFC Delivery may be temporarily unavailable at selected areas
+                                <li>To ensure rider safety, KFC Delivery may be temporarily unavailable at selected
+                                    areas
                                     due to weather conditions or unforeseen circumstances.
                                 </li>
                                 <li>Visuals shown are for illustration purposes only.</li>
-                                <li>Payment can be made by cash. Alternatively we accept payment made with credit card or
+                                <li>Payment can be made by cash. Alternatively we accept payment made with credit card
+                                    or
                                     debit card (Visa, MasterCard) issued by banks in Malaysia.
                                 </li>
-                                <li>Payment by credit card or debit card shall be made at the point of order. Cash payment
+                                <li>Payment by credit card or debit card shall be made at the point of order. Cash
+                                    payment
                                     shall be made at the point of arrival of food.
                                 </li>
-                                <li>There is strictly no refund, change or cancellation once the order has been confirmed or
+                                <li>There is strictly no refund, change or cancellation once the order has been
+                                    confirmed or
                                     payment has been made.
                                 </li>
-                                <li>In the event of any inconsistency between the English and Malay language version of the
+                                <li>In the event of any inconsistency between the English and Malay language version of
+                                    the
                                     terms and conditions, the English language version shall prevail.
                                 </li>
                             </ul>
@@ -992,15 +1054,19 @@
                 <div class="modal-content">
                     <div class="character"><img class="aura"
                                                 src="https://static.kfc.com.my/images/kaki/home/background-shrink.png?v1.8.62"><img
-                                src="https://static.kfc.com.my/images/kaki/winner/pop-up-winner-finger.png?v1.8.62"></div>
+                                src="https://static.kfc.com.my/images/kaki/winner/pop-up-winner-finger.png?v1.8.62">
+                    </div>
                     <div class="details">
                         <div class="header"><img
-                                    src="https://static.kfc.com.my/images/kaki/winner/pop-up-winner-text.png?v1.8.62"></div>
-                        <p>Thank you for supporting your KFC Kaki and do <br>continue voting to stand a chance to win the
+                                    src="https://static.kfc.com.my/images/kaki/winner/pop-up-winner-text.png?v1.8.62">
+                        </div>
+                        <p>Thank you for supporting your KFC Kaki and do <br>continue voting to stand a chance to win
+                            the
                             grand prize <br>of RM2,000! Check your email and we will <br>get in touch with you.</p>
                         <p class="small">If you have any enquiries, please contact us at <a href="tel:011-1028 2338">011-1028
                                 2338</a> from 10am to 5pm (Monday – Friday, excluding public holidays) or email us at <a
-                                    href="mailto:kfckakiunite@qsrbrands.com.my">kfckakiunite@qsrbrands.com.my</a>.</p></div>
+                                    href="mailto:kfckakiunite@qsrbrands.com.my">kfckakiunite@qsrbrands.com.my</a>.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1014,33 +1080,47 @@
                     <div class="content-wrapper"><h3>Add Hope FAQ</h3>
                         <ol class="main">
                             <li><p>What is Add Hope?</p>
-                                <p><b>Add Hope:</b> Originally launched in 2007 under the banner of ‘World Hunger Relief’,
+                                <p><b>Add Hope:</b> Originally launched in 2007 under the banner of ‘World Hunger
+                                    Relief’,
                                     <b>Add Hope</b> is KFC’s global Corporate Social Responsibility initiative. <b>Add
-                                        Hope</b> aims to highlight and drive action in the movement to end world hunger by
-                                    increasing money raised annually for the United Nations World Food Programme (WFP) and
+                                        Hope</b> aims to highlight and drive action in the movement to end world hunger
+                                    by
+                                    increasing money raised annually for the United Nations World Food Programme (WFP)
+                                    and
                                     other hunger relief agencies around the globe.</p>
-                                <p>As a global food service company, the drive to end world hunger is a natural fit for the
+                                <p>As a global food service company, the drive to end world hunger is a natural fit for
+                                    the
                                     company. KFC cares about the community in which it serves, and to date has activated
                                     more than 1.5 million employees, franchisees and volunteers to aid in hunger relief
                                     efforts in communities worldwide. The effort has raised $600 million for the United
-                                    Nations World Food Programme (WFP) and other hunger relief organizations and is helping
+                                    Nations World Food Programme (WFP) and other hunger relief organizations and is
+                                    helping
                                     to provide 2.4 billion meals to the WFP and save the lives of millions of people in
                                     remote corners of the world.</p></li>
                             <li><p>What is Add Hope Malaysia?</p>
-                                <p><b>It is the local installment of KFC’s</b> global initiative to end world hunger. The
-                                    power and reach of our system of restaurants, employees and vendors enable us to reach
-                                    out to millions of people who visit KFC, to join us in supporting this worthy cause. To
-                                    date KFC Malaysia has raised more than RM21.3 million locally. The funds are distributed
+                                <p><b>It is the local installment of KFC’s</b> global initiative to end world hunger.
+                                    The
+                                    power and reach of our system of restaurants, employees and vendors enable us to
+                                    reach
+                                    out to millions of people who visit KFC, to join us in supporting this worthy cause.
+                                    To
+                                    date KFC Malaysia has raised more than RM21.3 million locally. The funds are
+                                    distributed
                                     to the World Food Programme (WFP) as well as locally. Local beneficiaries include
                                     charity homes, NGOs, and underprivileged families across Malaysia.</p>
-                                <p><b>Add Hope</b> is an ongoing effort that goes beyond the fund-raising period, involving
+                                <p><b>Add Hope</b> is an ongoing effort that goes beyond the fund-raising period,
+                                    involving
                                     on-going initiatives through the year. KFC Malaysia is committed for the long-term,
-                                    recognizing that it takes concerted continued efforts to help fight hunger. To this end,
-                                    the entire organization is involved, from store-level to the management team. Everyone
+                                    recognizing that it takes concerted continued efforts to help fight hunger. To this
+                                    end,
+                                    the entire organization is involved, from store-level to the management team.
+                                    Everyone
                                     is rallied around the belief in the power of many and the power of giving.</p>
                                 <p>Every year funds are generated via donation boxes across our outlets nationwide and
-                                    through the sale of KFC <b>Add Hope</b> Meals during Ramadan and Hari Raya Aidilfitri.
-                                    Public may also donate via online at <a href="/csr-addhope">kfc.com.my/csr-addhope</a>
+                                    through the sale of KFC <b>Add Hope</b> Meals during Ramadan and Hari Raya
+                                    Aidilfitri.
+                                    Public may also donate via online at <a
+                                            href="/csr-addhope">kfc.com.my/csr-addhope</a>
                                 </p></li>
                             <li><p>What is the campaign’s goal?</p>
                                 <p>Mobilize our employees, customers and their families to alleviate hunger through:</p>
@@ -1049,16 +1129,19 @@
                                         both nationally throughout Malaysia and internationally via United Nations’ WFP.
                                         Since 2013 majority of the funds collected are channeled to local beneficiaries.
                                     </li>
-                                    <li><b>Education and awareness</b> about hunger and its effects on people and societies,
+                                    <li><b>Education and awareness</b> about hunger and its effects on people and
+                                        societies,
                                         especially in communities within Malaysia.
                                     </li>
-                                    <li><b>Aiding in the fight against hunger</b> in our society, especially in communities
+                                    <li><b>Aiding in the fight against hunger</b> in our society, especially in
+                                        communities
                                         within Malaysia.
                                     </li>
                                 </ul>
                             </li>
                             <li><p>What is the World Food Programme (WFP)?</p>
-                                <p>WFP is the world’s largest humanitarian agency that provides food and resources to build
+                                <p>WFP is the world’s largest humanitarian agency that provides food and resources to
+                                    build
                                     self-sustaining communities in the most impoverished corners of the world.</p></li>
                             <li><p>How many years have KFC Malaysia supported this cause?</p>
                                 <p>KFC Malaysia has supported this cause since 2007</p></li>
@@ -1066,7 +1149,8 @@
                                 <p>Funds will be collected from <b>7 June</b> onwards via:</p>
                                 <ul>
                                     <li>Donation boxes at cashier counters in KFC outlets nationwide</li>
-                                    <li>Special Add Hope Meal promotions at KFC (all meals sold under this promotion are <b>charged
+                                    <li>Special Add Hope Meal promotions at KFC (all meals sold under this promotion are
+                                        <b>charged
                                             an extra 50sen</b> which will go to the fund)
                                     </li>
                                     <li>Online donation via delivery orders or direct donation (<a href="/csr-addhope">kfc.com.my/csr-addhope</a>)
@@ -1076,7 +1160,8 @@
                             <li><p>How is the money collected locally being distributed to the needy?</p>
                                 <p>All donations go directly to Add Hope Malaysia, feeding people who would otherwise be
                                     faced with the possibility of not having anything to eat. Funds donated by customers
-                                    will directly support local hunger initiatives via Add Hope Distribution Programme and
+                                    will directly support local hunger initiatives via Add Hope Distribution Programme
+                                    and
                                     collaboration programmes with NGOs besides supporting the needs of WFP's food relief
                                     programmes in the least developed nations around the world.</p>
                                 <p><b>NGO Tie-Ups utilizing 2016 funds:</b></p>
@@ -1086,14 +1171,16 @@
                                             basic pre-package healthy meals 4 times a week for 7 months.</p></li>
                                     <li><p>Kechara Soup Kitchen Society Malaysia (KSK)</p>
                                         <p>Help provide food to the homeless and poor through Kechara Soup Kitchen with
-                                            distributing food every week for approximately 8 months as well as food bank to
+                                            distributing food every week for approximately 8 months as well as food bank
+                                            to
                                             185 families.</p></li>
                                     <li><p>Food Aid Foundation</p>
                                         <p>Food assistance and nutrition program to children, women who are expecting as
                                             well as nursing mothers.</p></li>
                                     <li><p>Yayasan Chow Kit</p>
                                         <p>Pantry program to provide two meals a day for all children and teens from low
-                                            income families who attend their three centres will have access to a basic and
+                                            income families who attend their three centres will have access to a basic
+                                            and
                                             healthy meal.</p></li>
                                     <li><p>Hope Worldwide Malaysia</p>
                                         <p>Help to provide food assistance to several underprivileged communities in the
@@ -1104,14 +1191,18 @@
                                         <p>To provide food assistance to several underprivileged communities in Johor,
                                             Perak, Pahang, Kelantan, Sabah &amp; Sarawak.</p></li>
                                     <li><p>Yayasan Orang Kurang Upaya Kelantan</p>
-                                        <p>To provide food assistance (lunch) for 1 school year calendar to school children
-                                            in at least 3 poor areas in Kelantan. (SK Sungai Rual, SK Sungai Long, SK Bukit
+                                        <p>To provide food assistance (lunch) for 1 school year calendar to school
+                                            children
+                                            in at least 3 poor areas in Kelantan. (SK Sungai Rual, SK Sungai Long, SK
+                                            Bukit
                                             Awang)</p></li>
                                 </ol>
                             </li>
                             <li><p>Why is KFC Malaysia working with these NGOs?</p>
-                                <p>These are official bodies that have the network and responsibility to ensure the funds
-                                    reach the right people - hungry, homeless, needy as well as the hardcore poor to provide
+                                <p>These are official bodies that have the network and responsibility to ensure the
+                                    funds
+                                    reach the right people - hungry, homeless, needy as well as the hardcore poor to
+                                    provide
                                     much needed relief. Working closely with them ensures it reaches the needy in an
                                     efficient and effective manner.</p></li>
                             <li><p>Where can the public learn more about the Add Hope Campaign?</p>
@@ -1140,7 +1231,8 @@
                                 </ul>
                             </li>
                             <li><p>How do I donate to this cause?</p>
-                                <p>During the month of Ramadan and Hari Raya Aidilfitri, you may donate by purchasing the
+                                <p>During the month of Ramadan and Hari Raya Aidilfitri, you may donate by purchasing
+                                    the
                                     Add Hope meal that is available on the menu, where 50 sen goes to the Add Hope fund.
                                     Otherwise, you may donate via online here or through collection boxes placed at KFC
                                     restaurants nationwide.</p></li>
@@ -1264,34 +1356,273 @@
         </div>
 
     </div>
+    <div id="popover" style="top: 395.5px; left: 420.5px; opacity: 1; display: none;"><div class="popover-content"><p></p></div></div>
 
 
 </div>
 
+<style>
+    #map .centerMarker {
+        position: absolute;
+        /*url of the marker*/
+        background: url(http://maps.gstatic.com/mapfiles/markers2/marker.png) no-repeat;
+        /*center the marker*/
+        top: 50%;
+        left: 50%;
+        z-index: 1;
+        /*fix offset when needed*/
+        margin-left: -10px;
+        margin-top: -34px;
+        /*size of the image*/
+        height: 34px;
+        width: 20px;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    var map, infoWindow, setlocation;
+    var headerCartItem = {!! json_encode(session('cartItemID')) !!} ;
 
 
-<script >
-    var map, infoWindow;
     $(document).ready(function () {
+
+        initHeaderCart();
+
+        if (localStorage.getItem('address') !== null)
+        {
+            $('#main').addClass('has-location');
+            $('#modal-customize-item').attr('data-customize', 'true');
+        }
+
+        //open order now
         $('#nav-order-now').on('click', function () {
-            //$('#modal-check-location').addClass('visible');
+            //check store open
+            $('#modal-check-location').addClass('visible');
         });
 
-        $('.button-close, .overlay').on('click', function(){
-            $('#modal-check-location').removeClass('visible');
-            $('.content-wrapper.check-location').css('display', 'block');
-            $('.content-wrapper.delivery-location').css('display', 'none');
-        });
-
-        $('.currentlocation').on('click', function(){
+        //change location
+        $('#nav-change-location').on('click', function () {
+            $('#modal-check-location').addClass('visible');
             $('.content-wrapper.check-location').css('display', 'none');
             $('.content-wrapper.delivery-location').css('display', 'block');
-
-
-            google.maps.event.trigger(map, 'resize');
+            $('.modal .modal-content .delivery-location .header h3').text('Drag the map to pin your location.');
+            initMap();
         });
 
+        //close order now
+        $('.button-close, .overlay').on('click', function () {
+            $('#modal-check-location').removeClass('visible');
+            $('#modal-member-checkout').removeClass('visible');
+            $('#modal-login').removeClass('visible');
+            $('.content-wrapper.check-location').css('display', 'block');
+            $('.content-wrapper.delivery-location').css('display', 'none');
+            $('#modal-delivery-eta').removeClass('visible');
+            $('#modal-register').removeClass('visible');
+        });
+
+        //use my current location
+        $('.currentlocation').on('click', function () {
+            $('.content-wrapper.check-location').css('display', 'none');
+            $('.content-wrapper.delivery-location').css('display', 'block');
+            $('.modal .modal-content .delivery-location .header h3').text('Drag the map to pin your location.');
+            initMap();
+        });
+
+        //change location
+        $('.anchor-button').on('click', function () {
+            $('.content-wrapper.check-location').css('display', 'block');
+            $('.content-wrapper.delivery-location').css('display', 'none');
+
+        });
+
+        //{"unit":"","building":"","street":"","area":"","city":"","state":"","zip":"","latitude":"","longitude":"","locationGroup":"","storeId":"","samplestreet":"","statecode":"","zonecode":"","corporateid":"","osid":""}
+        //confirm location
+        $('.modal .modal-content .delivery-location button').on('click', function () {
+            var locationjson = {
+                unit: setlocation[0].address_components[0].long_name,
+
+            }
+            localStorage.setItem('address', JSON.stringify(locationjson));
+            $('#modal-check-location').removeClass('visible');
+            $('#modal-delivery-eta').addClass('visible');
+            $('#main').addClass('has-location');
+        });
+
+        //order now
+        $('#modal-delivery-eta .modal-content button').on('click', function () {
+            $('#modal-delivery-eta').removeClass('visible');
+        });
+
+
+        $('#nav-cart').on('click', function () {
+//            $('.modal-content-box').animate({
+//                left: 0
+//            }, 1000, function(){
+//
+//            });
+
+            $('#cart-item-container').empty();
+            $('#modal-cart').css('display', 'block');
+
+            var x = JSON.parse($('#deliveryfoodjson').html());
+            var cartitemJson = x.filter(function (e) {
+                return _.indexOf(headerCartItem, e.foodID) > -1;
+            });
+            var ob = [];
+            for (var i = 0; i < headerCartItem.length; ++i)
+            {
+                ob.push({foodID: headerCartItem[i]});
+            }
+            if (cartitemJson.length == 0)
+            {
+                $('#cart-empty-content').css('display', 'block');
+                $('#cart-footer').css('display', 'none');
+            } else
+            {
+                $('#cart-empty-content').css('display', 'none');
+                $('#cart-footer').css('display', 'block');
+            }
+            var quantity = _.countBy(ob, 'foodID');
+            var wrapper = {objects: cartitemJson, quantity: quantity};
+            var compiled = _.template($('#cartItemTpl').html());
+            var html = compiled(wrapper);
+            $('#cart-item-container').append(html);
+            var subtotal = 0;
+            $('.cart-item-price').each(function (i, v) {
+                subtotal += parseFloat($(this).text().replace('RM', ''));
+            });
+            $('.subtotal td:last-child').text('RM ' + subtotal.toFixed(2));
+        });
+
+        $('.actions').on('click', function () {
+            $('#modal-cart').css('display', 'none');
+        });
+
+        $(document).on('click', '.cart-discard-button', function () {
+            var a = $(this).closest('.cartItemList');
+            var data = {
+                itemID: $(this).closest('.cartItemList').attr('itemID')
+            };
+            $.ajax({
+                type: 'post',
+                url: '{{ route('remove') }}',
+                data: data,
+                success: function (e) {
+                    console.log(data.item);
+                    console.log($('.cartItemList[itemid="' + data.itemID + '"]'));
+                    if ($(a).find('.cart-item-number span').text() == 1)
+                    {
+                        $('.cartItemList[itemid="' + data.itemID + '"]').remove();
+                        $('.card-container.clearafter').find('.card[data-id="' + data.itemID + '"] .add-cart').attr('data-count', 0);
+                        var datatotal = parseInt($('#nav-cart').attr('data-total'));
+                        $('#nav-cart').attr('data-total', datatotal - 1);
+
+                    } else
+                    {
+                        $(a).find('.cart-item-number span').text(parseInt($(a).find('.cart-item-number span').text()) - 1);
+                        var datatotal = parseInt($('#nav-cart').attr('data-total'));
+                        $('#nav-cart').attr('data-total', datatotal - 1);
+                        var datacount = parseInt($('.card-container.clearafter').find('.card[data-id="' + data.itemID + '"] .add-cart').attr('data-count'));
+                        $('.card-container.clearafter').find('.card[data-id="' + data.itemID + '"] .add-cart').attr('data-count', datacount - 1);
+                    }
+                    if ($('#cart-item-container li').length > 0)
+                    {
+                        $('#cart-empty-content').css('display', 'none');
+                    }
+
+                }
+            })
+        });
+
+        $('.price').on('click', function () {
+            if ($('.subtotal').hasClass('expand'))
+            {
+                $('.price tbody tr:nth-child(2)').css('display', 'none');
+                $('.price tbody tr:nth-child(3)').css('display', 'none');
+                $('.price tbody tr:nth-child(4)').css('display', 'none');
+                $('.subtotal').removeClass('expand');
+            } else
+            {
+                $('.price tbody tr:nth-child(2)').css('display', '');
+                $('.price tbody tr:nth-child(3)').css('display', '');
+                $('.price tbody tr:nth-child(4)').css('display', '');
+                $('.subtotal').addClass('expand');
+            }
+
+        });
+
+        $(document).on('click', '#login', function () {
+            $('#modal-login').addClass('visible');
+        });
+
+        $('.checkout-button').on('click', function () {
+            $('#modal-member-checkout').addClass('visible');
+        });
+
+        $(document).on('click', '#fblogin', function (e) {
+            window.location.href = '{{ route('facebookRedirect') }}'
+//            $('#modal-member-checkout').removeClass('visible');
+//            $('#modal-upsell').addClass('visible');
+//            var x = JSON.parse($('#deliveryfoodjson').html());
+//            var wrapper = {objects: x, cartItem: {}};
+//            var compiled = _.template($('#tpl').html());
+//            var html = compiled(wrapper);
+//            $('#modal-upsell .card-container.clearafter').append(html);
+        });
+
+        $(document).on('click', '.signuphere button', function () {
+            $('#modal-login').removeClass('visible');
+            $('#modal-register').addClass('visible');
+        });
+
+        $('.loginButton').on('click', function (e) {
+             e.preventDefault();
+            var data = {
+                email: $(this).closest('form').find('.input input').val(),
+                password: $(this).closest('form').find('.input:eq(1) input').val()
+            }
+             $.ajax({
+                type: 'post',
+                 url: '{{ route('login') }}',
+                 data: data,
+                 success: function (e) {
+                     location.reload();
+                 },
+                 error: function(data){
+                     var errors = data.responseJSON;
+                     if (errors != null){
+                        $('#popover').css('display', 'block');
+                         $('#popover .popover-content p').text('Invalid Email/Password combination.');
+                         $('#modal-login .input').addClass('error');
+                     }
+                    // console.log(errors);
+                     //这里理论上可以捕捉错误
+                 }
+             });
+        });
+
+
     });
+
+    function initHeaderCart() {
+        var x = JSON.parse($('#deliveryfoodjson').html());
+        var cartitemJson = x.filter(function (e) {
+            return _.indexOf(headerCartItem, e.foodID) > -1;
+        });
+        console.log(headerCartItem);
+        var ob = [];
+        for (var i = 0; i < headerCartItem.length; ++i)
+        {
+            ob.push({foodID: headerCartItem[i]});
+        }
+
+        var quantity = _.countBy(ob, 'foodID');
+        var wrapper = {objects: cartitemJson, quantity: quantity};
+        var compiled = _.template($('#cartItemTpl').html());
+        var html = compiled(wrapper);
+        $('#cart-item-container').append(html);
+    }
 
 
     // Note: This example requires that you consent to location sharing when
@@ -1302,29 +1633,114 @@
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: -34.397, lng: 150.644},
-            zoom: 15
+            zoom: 15,
+            draggable: true
         });
-        infoWindow = new google.maps.InfoWindow;
+
 
         // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
+        if (navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition(function (position) {
                 var pos = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
-
-                infoWindow.setPosition(pos);
-                infoWindow.setContent('Location found.');
-                infoWindow.open(map);
+                var infowindow = new google.maps.InfoWindow;
+                var geocoder = new google.maps.Geocoder;
                 map.setCenter(pos);
-            }, function() {
+
+                geocoder.geocode({'location': pos}, function (results, status) {
+                    if (status === 'OK')
+                    {
+                        //  console.log(results);
+                        setlocation = results;
+                        $('.placename').text(results[0].address_components[0].long_name + ", " + results[0].address_components[1].long_name);
+                    } else
+                    {
+                        window.alert('Geocoder failed due to: ' + status);
+                    }
+                });
+
+                google.maps.event.addListener(map, "dragend", function () {
+                    //  console.log(map.getCenter().toUrlValue());
+                    setlocation = map.getCenter().toUrlValue();
+                    geocodeLatLng(geocoder, map, infowindow, map.getCenter().toUrlValue());
+                });
+
+//                markerAPosition = new google.maps.LatLng(pos),
+//                    markerA = new google.maps.Marker({
+//                        map: map,
+//                        position: markerAPosition
+//                    });
+
+//                circle = new google.maps.Circle( {
+//                    map           : map,
+//                    center        : pos,
+//                    radius        : 1000,
+//                    strokeColor   : '#FF0099',
+//                    strokeOpacity : 1,
+//                    strokeWeight  : 2,
+//                    fillColor     : '#009ee0',
+//                    fillOpacity   : 0.2
+//                } )
+
+            }, function () {
                 handleLocationError(true, infoWindow, map.getCenter());
             });
-        } else {
+        } else
+        {
             // Browser doesn't support Geolocation
             handleLocationError(false, infoWindow, map.getCenter());
         }
+
+        $('<div/>').addClass('centerMarker').appendTo(map.getDiv())
+        //do something onclick
+            .click(function () {
+                var that = $(this);
+                if (!that.data('win'))
+                {
+                    that.data('win', new google.maps.InfoWindow({content: 'this is the center'}));
+                    that.data('win').bindTo('position', map, 'center');
+                }
+                that.data('win').open(map);
+            });
+
+
+    }
+
+    function downloadUrl(url, callback) {
+        var request = window.ActiveXObject ?
+            new ActiveXObject('Microsoft.XMLHTTP') :
+            new XMLHttpRequest;
+
+        request.onreadystatechange = function () {
+            if (request.readyState == 4)
+            {
+                request.onreadystatechange = doNothing;
+                callback(request.responseText, request.status);
+            }
+        };
+
+        request.open('GET', url, true);
+        request.send(null);
+    }
+
+
+    function geocodeLatLng(geocoder, map, infowindow, input) {
+        //var input = document.getElementById('latlng').value;
+        var latlngStr = input.split(',', 2);
+        var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+        geocoder.geocode({'location': latlng}, function (results, status) {
+            if (status === 'OK')
+            {
+                // console.log(results);
+                $('.placename').text(results[0].address_components[0].long_name + ", " + results[0].address_components[1].long_name);
+            } else
+            {
+                window.alert('Geocoder failed due to: ' + status);
+            }
+        });
     }
 
     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -1335,13 +1751,83 @@
         infoWindow.open(map);
     }
 
+
 </script>
+
+<script id="deliveryfoodjson" type="application/json">
+    {!! $df !!}
+</script>
+
+
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvouiSxPQfhLcRwGvH_9cmFSZIo0OCnHo&callback=initMap">
 </script>
-@section('script') @show
+<script type="text/template" id="cartItemTpl">
+    <% _.each(objects, function(food) { %>
 
-<script src="{{ URL::asset('js/app.js') }}"></script>
+    <li class="cartItemList" itemid="<%= food.foodID %>">
+        <button class="cart-discard-button"></button>
+        <div class="cart-details-container">
+            <div class="cart-item-detail-box">
+                <div class="cart-item-image"><img
+                            src="{{ url('img/delivery food/food/')  }}/<%= food.foodImg %>"
+                            alt="<%= food.name %>"></div>
+                <div class="cart-item-details"><h4 class="cart-item-name"><%= food.name %></h4>
+                    <ul class="cart-item-description">
+                        <li>1 Chizza</li>
+                    </ul>
+                    <p><span class="cart-item-number">Qty: <span><%= quantity[food.foodID] %></span></span> | <span class="cart-item-price">RM <%= (quantity[food.foodID]*food.price).toFixed(2) %></span></p>
+                </div>
+                <% if (food.type == 0) { %>
+                 <button class="toggle-customize">Customise meal</button>
+                <% } %>
+
+            </div>
+        </div>
+        <div class="cart-customization">
+            <div class="choice clearafter">
+                <div class="label">Preferred Flavor</div>
+                <div class="custom-dropdown single-item"><label>Original</label><select class="single-item">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                    </select>
+                    <div data-checked="1" class="checkbox"></div>
+                </div>
+                <div class="custom-dropdown single-item"><label>Hot &amp; Spicy</label><select class="">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                    </select>
+                    <div data-checked="0" class="checkbox"></div>
+                </div>
+            </div>
+            <div class="choice clearafter">
+                <div class="label">Preferred Drink</div>
+                <div class="custom-dropdown single-item"><label><img
+                                src="https://static.kfc.com.my/images/delivery/icon-pepsi.png?v1.8.84"
+                                alt="Pepsi"></label><select class="single-item">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                    </select>
+                    <div data-checked="1" class="checkbox"></div>
+                </div>
+                <div class="custom-dropdown single-item"><label><img
+                                src="https://static.kfc.com.my/images/delivery/icon-7up.png?v1.8.84"
+                                alt="7up"></label><select class="">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                    </select>
+                    <div data-checked="0" class="checkbox"></div>
+                </div>
+            </div>
+        </div>
+    </li>
+
+    <% }); %>
+
+</script>
+@section('script')
+@show
+
 </body>
 
 
